@@ -1,5 +1,5 @@
 
-import 'package:cosmetic_app/album_select/album_select.dart';
+import 'package:cosmetic_app/screens/album_select.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(App());
