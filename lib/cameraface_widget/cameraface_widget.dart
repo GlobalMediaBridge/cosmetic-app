@@ -145,7 +145,7 @@ class CamerafaceWidget extends StatelessWidget {
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        Image.asset("assets/images/-773.png",),
+                                        Image.asset("assets/images/lotation.png",),
                                         SizedBox(
                                           height: 10,
                                         ),
@@ -185,7 +185,7 @@ class CamerafaceWidget extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset("assets/images/-1.png",),
+                    Image.asset("assets/images/camera_main.png",),
                     SizedBox(
                       width: 10,
                     ),
