@@ -53,7 +53,7 @@ class FilterWidget extends StatelessWidget {
                       onPressed: () => this.onButtonThreePressed(context),
                       color: AppColors.primaryText,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(14)),
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
                       textColor: Color.fromARGB(255, 255, 255, 255),
                       padding: EdgeInsets.all(0),
