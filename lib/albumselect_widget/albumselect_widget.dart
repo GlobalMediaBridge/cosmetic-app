@@ -36,8 +36,8 @@ class AlbumselectWidget extends StatelessWidget {
             "Exit",
             textAlign: TextAlign.left,
             style: TextStyle(
-              color: Color.fromARGB(255, 0, 0, 0),
-              fontWeight: FontWeight.w400,
+              color: AppColors.primaryText,
+              fontWeight: FontWeight.w700,
               fontSize: 12,
             ),
           ),
