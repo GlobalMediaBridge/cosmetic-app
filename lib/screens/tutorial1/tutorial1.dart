@@ -1,23 +1,25 @@
 
-import 'package:cosmetic_app/tutorial3/tutorial3_animation1_element1.dart';
-import 'package:cosmetic_app/tutorial3/tutorial3_animation1_element2.dart';
-import 'package:cosmetic_app/tutorial3/tutorial3_animation1_element3.dart';
+import 'package:cosmetic_app/screens/tutorial1/tutorial1_animation1_element1.dart';
+import 'package:cosmetic_app/screens/tutorial1/tutorial1_animation1_element2.dart';
+import 'package:cosmetic_app/screens/tutorial1/tutorial1_animation1_element3.dart';
+import 'package:cosmetic_app/screens/tutorial1/tutorial1_animation1_element4.dart';
 import 'package:cosmetic_app/values/values.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 
 
-class Tutorial3 extends StatefulWidget {
+class Tutorial1 extends StatefulWidget {
   
   @override
-  State<StatefulWidget> createState() => _Tutorial3State();
+  State<StatefulWidget> createState() => _Tutorial1State();
 }
 
 
-class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
+class _Tutorial1State extends State<Tutorial1> with TickerProviderStateMixin {
   AnimationController titleTwoAnimationController;
   AnimationController maintextTextAnimationController;
-  AnimationController selectlightfilterImageAnimationController;
+  AnimationController faceimageImageAnimationController;
+  AnimationController colorimageImageAnimationController;
   
   @override
   void initState() {
@@ -26,7 +28,8 @@ class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
     
     this.titleTwoAnimationController = AnimationController(duration: Duration(milliseconds: 500), vsync: this);
     this.maintextTextAnimationController = AnimationController(duration: Duration(milliseconds: 1000), vsync: this);
-    this.selectlightfilterImageAnimationController = AnimationController(duration: Duration(milliseconds: 1500), vsync: this);
+    this.faceimageImageAnimationController = AnimationController(duration: Duration(milliseconds: 2500), vsync: this);
+    this.colorimageImageAnimationController = AnimationController(duration: Duration(milliseconds: 1500), vsync: this);
     
     this.startAnimationOne();
   }
@@ -38,14 +41,16 @@ class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
     
     this.titleTwoAnimationController.dispose();
     this.maintextTextAnimationController.dispose();
-    this.selectlightfilterImageAnimationController.dispose();
+    this.faceimageImageAnimationController.dispose();
+    this.colorimageImageAnimationController.dispose();
   }
   
   void startAnimationOne() {
   
     this.titleTwoAnimationController.forward();
     this.maintextTextAnimationController.forward();
-    this.selectlightfilterImageAnimationController.forward();
+    this.faceimageImageAnimationController.forward();
+    this.colorimageImageAnimationController.forward();
   }
   
   @override
@@ -60,10 +65,10 @@ class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
         child: Column(
           children: [
             Container(
-              width: 147,
+              width: 116,
               height: 26,
               margin: EdgeInsets.only(top: 60),
-              child: Tutorial3WidgetAnimation1Element1(
+              child: Tutorial1WidgetAnimation1Element1(
                 animationController: this.titleTwoAnimationController,
                 child: Stack(
                   alignment: Alignment.center,
@@ -73,7 +78,7 @@ class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
                       child: Opacity(
                         opacity: 0.5,
                         child: Container(
-                          width: 180,
+                          width: 153,
                           height: 30,
                           decoration: BoxDecoration(
                             color: Color.fromARGB(255, 254, 215, 2),
@@ -92,10 +97,10 @@ class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Step 3.",
+                              "Step 1.",
                               textAlign: TextAlign.left,
                               style: TextStyle(
-                                color: AppColors.primaryText,
+                                color: Color.fromARGB(255, 247, 7, 70),
                                 fontFamily: "Lobster 1.4",
                                 fontWeight: FontWeight.w400,
                                 fontSize: 20,
@@ -106,10 +111,10 @@ class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "필터 선택하기",
-                              textAlign: TextAlign.left,
+                              "사진 찍기",
+                              textAlign: TextAlign.center,
                               style: TextStyle(
-                                color: AppColors.primaryText,
+                                color: Color.fromARGB(255, 247, 7, 70),
                                 fontFamily: "NanumBarunGothic",
                                 fontWeight: FontWeight.w700,
                                 fontSize: 16,
@@ -124,12 +129,12 @@ class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
               ),
             ),
             Container(
-              width: 243,
+              width: 230,
               margin: EdgeInsets.only(top: 24),
-              child: Tutorial3WidgetAnimation1Element2(
+              child: Tutorial1WidgetAnimation1Element2(
                 animationController: this.maintextTextAnimationController,
                 child: Text(
-                  "장소에 따라\n바뀌는 색감을 확인",
+                  "손목 발색 사진과\n민낯 사진을 업로드!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: AppColors.accentText,
@@ -141,7 +146,6 @@ class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
                 ),
               ),
             ),
-            Spacer(),
             Container(
               width: 280,
               height: 522,
@@ -155,7 +159,7 @@ class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
                       width: 280,
                       height: 522,
                       decoration: BoxDecoration(
-                        color: AppColors.primaryBackground,
+                        color: Color.fromARGB(255, 54, 54, 54),
                         boxShadow: [
                           Shadows.primaryShadow,
                         ],
@@ -166,17 +170,31 @@ class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
                   ),
                   Positioned(
                     top: 48,
-                    child: Image.asset(
-                      "assets/images/screen_capture_3.png",
-                      fit: BoxFit.none,
+                    child: Container(
+                      width: 252,
+                      height: 448,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 0, 0, 0),
+                      ),
+                      child: Container(),
                     ),
                   ),
                   Positioned(
                     top: 48,
-                    child: Tutorial3WidgetAnimation1Element3(
-                      animationController: this.selectlightfilterImageAnimationController,
+                    child: Tutorial1WidgetAnimation1Element4(
+                      animationController: this.colorimageImageAnimationController,
                       child: Image.asset(
-                        "assets/images/screen_capture_4.png",
+                        "assets/images/screen_capture_1.png",
+                        fit: BoxFit.none,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 48,
+                    child: Tutorial1WidgetAnimation1Element3(
+                      animationController: this.faceimageImageAnimationController,
+                      child: Image.asset(
+                        "assets/images/screen_capture_2.png",
                         fit: BoxFit.none,
                       ),
                     ),
