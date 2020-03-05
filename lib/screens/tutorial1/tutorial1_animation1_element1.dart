@@ -1,6 +1,6 @@
 
 import 'dart:math';
-import 'package:cosmetic_app/values/values.dart';
+import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:supernova_flutter_ui_toolkit/keyframes.dart';
 

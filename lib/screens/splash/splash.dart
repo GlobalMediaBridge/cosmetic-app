@@ -1,7 +1,7 @@
 
 import 'package:cosmetic_app/screens/splash/splash_animation1_element1.dart';
 import 'package:cosmetic_app/screens/splash/splash_animation1_element2.dart';
-import 'package:cosmetic_app/values/values.dart';
+import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 

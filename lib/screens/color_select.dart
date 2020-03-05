@@ -1,5 +1,5 @@
 
-import 'package:cosmetic_app/values/values.dart';
+import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/material.dart';
 
 

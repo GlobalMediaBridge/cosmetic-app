@@ -3,7 +3,7 @@ import 'package:cosmetic_app/screens/tutorial1/tutorial1_animation1_element1.dar
 import 'package:cosmetic_app/screens/tutorial1/tutorial1_animation1_element2.dart';
 import 'package:cosmetic_app/screens/tutorial1/tutorial1_animation1_element3.dart';
 import 'package:cosmetic_app/screens/tutorial1/tutorial1_animation1_element4.dart';
-import 'package:cosmetic_app/values/values.dart';
+import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 
