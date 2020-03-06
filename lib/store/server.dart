@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class Server {
-  static final String url = "http://localhost:5000";
+  static final String url = "http://ec2-13-125-153-38.ap-northeast-2.compute.amazonaws.com:5000";
   static final Dio dio = Dio();
 
   static Future<String> uploadPalette(File image) async {
