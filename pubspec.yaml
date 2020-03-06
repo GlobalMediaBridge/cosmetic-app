@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   supernova_flutter_ui_toolkit: ^0.0.2
   provider: ^4.0.4
+  dio: ^3.0.9
 
 dev_dependencies:
   flutter_test:
