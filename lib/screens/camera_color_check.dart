@@ -72,7 +72,7 @@ class CameraColorCheck extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Image.asset("assets/images/-801-2.png",),
+                                Image.asset("assets/images/back.png",),
                                 SizedBox(
                                   width: 10,
                                 ),
@@ -112,7 +112,7 @@ class CameraColorCheck extends StatelessWidget {
             Positioned(
               bottom: 51,
               child: Image.asset(
-                "assets/images/-1-4.png",
+                "assets/images/next_background.png",
                 fit: BoxFit.none,
               ),
             ),
@@ -129,7 +129,7 @@ class CameraColorCheck extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset("assets/images/-230.png",),
+                    Image.asset("assets/images/next.png",),
                     SizedBox(
                       width: 10,
                     ),
