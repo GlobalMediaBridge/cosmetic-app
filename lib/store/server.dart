@@ -42,4 +42,16 @@ class Server {
     Color color = Color.fromARGB(data[3].toInt(), data[2].toInt(), data[1].toInt(), data[0].toInt());
     return color;
   }
+
+  static Future<String> makeup(String id, Color color) async {
+    List<int> c = [color.blue, color.green, color.red, color.alpha];
+    Response response = await dio.post(
+      "$url/extract",
+      data: {"color": c},
+      options: Options(
+        headers: {"id": id},
+      ),
+    );
+    return response.data.toString();
+  }
 }
