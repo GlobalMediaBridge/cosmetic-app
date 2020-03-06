@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:camera/camera.dart';
 import 'package:cosmetic_app/screens/camera_color_check.dart';
 import 'package:cosmetic_app/utils/values/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -37,7 +40,22 @@ class _CameraColorState extends State<CameraColor> {
     super.dispose();
   }
 
-  void openGallery(BuildContext context) {}
+  void openGallery(BuildContext context) async {
+    try{
+      File image = await ImagePicker.pickImage(
+          source: ImageSource.gallery);
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CameraColorCheck(preview: image),
+        ),
+      );
+    } catch (e) {
+      // If an error occurs, log the error to the console.
+      print(e);
+    }
+  }
 
   void flip(BuildContext context) {
     setState(() {
@@ -61,7 +79,7 @@ class _CameraColorState extends State<CameraColor> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => CameraColorCheck(path: path),
+          builder: (context) => CameraColorCheck(preview: File(path)),
         ),
       );
     } catch (e) {

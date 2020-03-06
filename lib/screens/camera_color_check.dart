@@ -9,9 +9,9 @@ import 'package:flutter/material.dart';
 
 
 class CameraColorCheck extends StatelessWidget {
-  String path;
+  File preview;
 
-  CameraColorCheck({@required this.path});
+  CameraColorCheck({@required this.preview});
   
   void onReturnPressed(BuildContext context) {
     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => CameraColor()));
@@ -44,7 +44,7 @@ class CameraColorCheck extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Container(
-                    child: Image.file(File(path)),
+                    child: Image.file(preview),
                   ),
                   Spacer(),
                   Container(
