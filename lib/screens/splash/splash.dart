@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:cosmetic_app/screens/splash/splash_animation1_element1.dart';
-import 'package:cosmetic_app/screens/splash/splash_animation1_element2.dart';
+import 'package:cosmetic_app/screens/splash/splash_fadeout.dart';
+import 'package:cosmetic_app/screens/splash/splash_fadein.dart';
 import 'package:cosmetic_app/screens/start/start.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/animation.dart';
@@ -15,7 +15,6 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> with TickerProviderStateMixin {
   AnimationController logoTextAnimationController;
   AnimationController findyourcolorTextAnimationController;
-  AnimationController LosQDQlNZMAnimationController;
 
   @override
   void initState() {
@@ -25,10 +24,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
         duration: Duration(milliseconds: 2000), vsync: this);
     this.findyourcolorTextAnimationController = AnimationController(
         duration: Duration(milliseconds: 2000), vsync: this);
-    this.LosQDQlNZMAnimationController =
-        AnimationController(duration: Duration(milliseconds: 0), vsync: this);
-
-    this.startAnimationOne();
+    this.startAnimation();
   }
 
   @override
@@ -37,17 +33,15 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
 
     this.logoTextAnimationController.dispose();
     this.findyourcolorTextAnimationController.dispose();
-    this.LosQDQlNZMAnimationController.dispose();
   }
 
-  void startAnimationOne() {
+  void startAnimation() {
     this.logoTextAnimationController.forward();
     this.findyourcolorTextAnimationController.forward();
-    this.LosQDQlNZMAnimationController.forward();
-    Timer(Duration(milliseconds: 2000), () {
+    /*Timer(Duration(milliseconds: 2000), () {
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (BuildContext context) => Start()));
-    });
+    });*/
   }
 
   @override
@@ -61,10 +55,10 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Positioned(
+            Center(
               child: Opacity(
                 opacity: 1,
-                child: SplashWidgetAnimation1Element2(
+                child: SplashFadeOut(
                   animationController:
                       this.findyourcolorTextAnimationController,
                   child: Text(
@@ -80,8 +74,8 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
                 ),
               ),
             ),
-            Positioned(
-              child: SplashWidgetAnimation1Element1(
+            Center(
+              child: SplashFadeIn(
                 animationController: this.logoTextAnimationController,
                 child: Text(
                   "logo",
