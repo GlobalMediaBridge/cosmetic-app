@@ -1,4 +1,5 @@
 
+import 'package:cosmetic_app/screens/camera_color_check.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,7 @@ class CameraColor extends StatelessWidget {
   }
   
   void onButtonTwoPressed(BuildContext context) {
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => CameraColorCheck()));
   
   }
   

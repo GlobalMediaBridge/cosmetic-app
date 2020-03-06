@@ -1,4 +1,5 @@
 
+import 'package:cosmetic_app/screens/start/start.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 class Filter extends StatelessWidget {
   
   void onButtonThreePressed(BuildContext context) {
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => Start()));
   
   }
   

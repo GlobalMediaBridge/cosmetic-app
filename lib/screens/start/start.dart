@@ -1,7 +1,10 @@
 
+import 'package:cosmetic_app/screens/camera_color.dart';
 import 'package:cosmetic_app/screens/start/start_animation1_element1.dart';
 import 'package:cosmetic_app/screens/start/start_animation1_element2.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
+import 'package:cosmetic_app/screens/album.dart';
+import 'package:cosmetic_app/screens/tutorial1/tutorial1.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 
@@ -38,15 +41,16 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
   }
   
   void onButtonTwoPressed(BuildContext context) {
-  
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => CameraColor()));
   }
   
   void onButtonThreePressed(BuildContext context) {
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => Album()));
   
   }
   
   void onButtonPressed(BuildContext context) {
-  
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => Tutorial1()));
   }
   
   void startAnimationOne() {
