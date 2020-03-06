@@ -1,27 +1,29 @@
 
 import 'package:cosmetic_app/screens/camera_color_check.dart';
-import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/material.dart';
 
+class CameraColor extends StatefulWidget {
+  @override
+  _CameraColorState createState() => _CameraColorState();
+}
 
-class CameraColor extends StatelessWidget {
-  
+class _CameraColorState extends State<CameraColor> {
   void onViewPressed(BuildContext context) {
-  
+
   }
-  
+
   void onButtonPressed(BuildContext context) {
-  
+
   }
-  
+
   void onButtonTwoPressed(BuildContext context) {
     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => CameraColorCheck()));
-  
+
   }
-  
+
   @override
   Widget build(BuildContext context) {
-  
+
     return Scaffold(
       body: Container(
         constraints: BoxConstraints.expand(),
