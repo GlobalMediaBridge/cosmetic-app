@@ -15,4 +15,12 @@ class Server {
     return response.data.toString();
   }
 
+  static Future<String> uploadFace(File image) async {
+    FormData formData = FormData.fromMap({
+      "image": await MultipartFile.fromFile(image.path,
+          filename: 'face.jpg'),
+    });
+    Response response = await dio.post("$url/upload", data: formData);
+    return response.data.toString();
+  }
 }
