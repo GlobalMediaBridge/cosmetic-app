@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:cosmetic_app/screens/camera_face.dart';
 import 'package:cosmetic_app/screens/camera_color.dart';
 import 'package:cosmetic_app/screens/color_select.dart';
+import 'package:cosmetic_app/store/server.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/material.dart';
 
@@ -14,13 +15,14 @@ class CameraColorCheck extends StatelessWidget {
   CameraColorCheck({@required this.preview});
   
   void onReturnPressed(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => CameraColor()));
+    Navigator.of(context).pop(MaterialPageRoute(builder: (BuildContext context) => CameraColor()));
   
   }
   
-  void onButtonPressed(BuildContext context) {
+  void onButtonPressed(BuildContext context) async {
+    String response = await Server.uploadPalette(preview);
+    print(response);
     Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => ColorSelect()));
-  
   }
 
   @override
