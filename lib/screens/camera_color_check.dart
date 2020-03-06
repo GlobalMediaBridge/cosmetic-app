@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:cosmetic_app/screens/camera_face.dart';
 import 'package:cosmetic_app/screens/camera_color.dart';
 import 'package:cosmetic_app/screens/color_select.dart';
@@ -7,6 +9,9 @@ import 'package:flutter/material.dart';
 
 
 class CameraColorCheck extends StatelessWidget {
+  File preview;
+
+  CameraColorCheck({@required this.preview});
   
   void onReturnPressed(BuildContext context) {
     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => CameraColor()));
@@ -39,11 +44,7 @@ class CameraColorCheck extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Container(
-                    height: 500,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                    ),
-                    child: Container(),
+                    child: Image.file(preview),
                   ),
                   Spacer(),
                   Container(
