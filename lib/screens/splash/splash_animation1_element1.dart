@@ -46,4 +46,5 @@ class SplashWidgetAnimation1Element1 extends StatelessWidget {
       },
     );
   }
+
 }

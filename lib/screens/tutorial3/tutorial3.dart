@@ -1,4 +1,5 @@
 
+import 'package:cosmetic_app/screens/start/start.dart';
 import 'package:cosmetic_app/screens/tutorial3/tutorial3_animation1_element1.dart';
 import 'package:cosmetic_app/screens/tutorial3/tutorial3_animation1_element2.dart';
 import 'package:cosmetic_app/screens/tutorial3/tutorial3_animation1_element3.dart';
@@ -47,144 +48,152 @@ class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
     this.maintextTextAnimationController.forward();
     this.selectlightfilterImageAnimationController.forward();
   }
+
+  void onItemPressed(BuildContext context) {
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => Start()));
+
+  }
   
   @override
   Widget build(BuildContext context) {
   
     return Scaffold(
-      body: Container(
-        constraints: BoxConstraints.expand(),
-        decoration: BoxDecoration(
-          color: Color.fromARGB(255, 255, 255, 255),
-        ),
-        child: Column(
-          children: [
-            Container(
-              width: 147,
-              height: 26,
-              margin: EdgeInsets.only(top: 60),
-              child: Tutorial3WidgetAnimation1Element1(
-                animationController: this.titleTwoAnimationController,
+      body: GestureDetector(
+        onTap: () => this.onItemPressed(context),
+        child: Container(
+          constraints: BoxConstraints.expand(),
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 255, 255, 255),
+          ),
+          child: Column(
+            children: [
+              Container(
+                width: 147,
+                height: 26,
+                margin: EdgeInsets.only(top: 60),
+                child: Tutorial3WidgetAnimation1Element1(
+                  animationController: this.titleTwoAnimationController,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Positioned(
+                        top: -2,
+                        child: Opacity(
+                          opacity: 0.5,
+                          child: Container(
+                            width: 180,
+                            height: 30,
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 254, 215, 2),
+                              borderRadius: BorderRadius.all(Radius.circular(15)),
+                            ),
+                            child: Container(),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        left: 0,
+                        right: 0,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "Step 3.",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  color: AppColors.primaryText,
+                                  fontFamily: "Lobster 1.4",
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                            Spacer(),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "필터 선택하기",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  color: AppColors.primaryText,
+                                  fontFamily: "NanumBarunGothic",
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                width: 243,
+                margin: EdgeInsets.only(top: 24),
+                child: Tutorial3WidgetAnimation1Element2(
+                  animationController: this.maintextTextAnimationController,
+                  child: Text(
+                    "장소에 따라\n바뀌는 색감을 확인",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: AppColors.accentText,
+                      fontFamily: "NanumBarunGothic",
+                      fontWeight: FontWeight.w700,
+                      fontSize: 28,
+                      height: 1.21429,
+                    ),
+                  ),
+                ),
+              ),
+              Spacer(),
+              Container(
+                width: 280,
+                height: 522,
+                margin: EdgeInsets.only(top: 29),
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
                     Positioned(
-                      top: -2,
-                      child: Opacity(
-                        opacity: 0.5,
-                        child: Container(
-                          width: 180,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 254, 215, 2),
-                            borderRadius: BorderRadius.all(Radius.circular(15)),
-                          ),
-                          child: Container(),
+                      top: 0,
+                      child: Container(
+                        width: 280,
+                        height: 522,
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryBackground,
+                          boxShadow: [
+                            Shadows.primaryShadow,
+                          ],
+                          borderRadius: BorderRadius.all(Radius.circular(25)),
                         ),
+                        child: Container(),
                       ),
                     ),
                     Positioned(
-                      left: 0,
-                      right: 0,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "Step 3.",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                color: AppColors.primaryText,
-                                fontFamily: "Lobster 1.4",
-                                fontWeight: FontWeight.w400,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                          Spacer(),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "필터 선택하기",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                color: AppColors.primaryText,
-                                fontFamily: "NanumBarunGothic",
-                                fontWeight: FontWeight.w700,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                        ],
+                      top: 48,
+                      child: Image.asset(
+                        "assets/images/screen_capture_3.png",
+                        fit: BoxFit.none,
+                      ),
+                    ),
+                    Positioned(
+                      top: 48,
+                      child: Tutorial3WidgetAnimation1Element3(
+                        animationController: this.selectlightfilterImageAnimationController,
+                        child: Image.asset(
+                          "assets/images/screen_capture_4.png",
+                          fit: BoxFit.none,
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
-            Container(
-              width: 243,
-              margin: EdgeInsets.only(top: 24),
-              child: Tutorial3WidgetAnimation1Element2(
-                animationController: this.maintextTextAnimationController,
-                child: Text(
-                  "장소에 따라\n바뀌는 색감을 확인",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: AppColors.accentText,
-                    fontFamily: "NanumBarunGothic",
-                    fontWeight: FontWeight.w700,
-                    fontSize: 28,
-                    height: 1.21429,
-                  ),
-                ),
-              ),
-            ),
-            Spacer(),
-            Container(
-              width: 280,
-              height: 522,
-              margin: EdgeInsets.only(top: 29),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Positioned(
-                    top: 0,
-                    child: Container(
-                      width: 280,
-                      height: 522,
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryBackground,
-                        boxShadow: [
-                          Shadows.primaryShadow,
-                        ],
-                        borderRadius: BorderRadius.all(Radius.circular(25)),
-                      ),
-                      child: Container(),
-                    ),
-                  ),
-                  Positioned(
-                    top: 48,
-                    child: Image.asset(
-                      "assets/images/screen_capture_3.png",
-                      fit: BoxFit.none,
-                    ),
-                  ),
-                  Positioned(
-                    top: 48,
-                    child: Tutorial3WidgetAnimation1Element3(
-                      animationController: this.selectlightfilterImageAnimationController,
-                      child: Image.asset(
-                        "assets/images/screen_capture_4.png",
-                        fit: BoxFit.none,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

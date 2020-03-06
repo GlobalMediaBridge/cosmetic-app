@@ -1,4 +1,5 @@
 
+import 'package:cosmetic_app/screens/color_add_check.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 class ColorAdd extends StatelessWidget {
   
   void onButtonPressed(BuildContext context) {
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => ColorAddCheck()));
   
   }
   
