@@ -26,8 +26,8 @@ dependencies:
   supernova_flutter_ui_toolkit: ^0.0.2
   provider: ^4.0.4
   dio: ^3.0.9
-  camera: ^0.5.7+3
-  path_provider: ^1.6.1
+  camera: ^0.5.7+4
+  path_provider: ^1.6.5
   path: ^1.6.4
 
 dev_dependencies:
