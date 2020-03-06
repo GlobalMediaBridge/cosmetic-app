@@ -38,20 +38,17 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
   void startAnimation() {
     this.logoTextAnimationController.forward();
     this.findyourcolorTextAnimationController.forward();
-    /*Timer(Duration(milliseconds: 2000), () {
+    Timer(Duration(milliseconds: 2000), () {
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (BuildContext context) => Start()));
-    });*/
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        constraints: BoxConstraints.expand(),
-        decoration: BoxDecoration(
-          color: Color.fromARGB(255, 247, 7, 70),
-        ),
+        color: Color.fromARGB(255, 247, 7, 70),
         child: Stack(
           alignment: Alignment.center,
           children: [
