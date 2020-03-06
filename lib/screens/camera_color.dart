@@ -51,7 +51,7 @@ class _CameraColorState extends State<CameraColor> {
     try {
       await _initializeControllerFuture;
 
-      final path = join(
+      final String path = join(
         (await getTemporaryDirectory()).path,
         '${DateTime.now()}.jpg',
       );
@@ -61,7 +61,7 @@ class _CameraColorState extends State<CameraColor> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => CameraColorCheck(),
+          builder: (context) => CameraColorCheck(path: path),
         ),
       );
     } catch (e) {
