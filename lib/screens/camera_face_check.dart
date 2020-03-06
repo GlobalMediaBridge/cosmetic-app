@@ -9,12 +9,12 @@ import 'package:flutter/material.dart';
 class CameraFaceCheck extends StatelessWidget {
   
   void onReturnPressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => CameraFace()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => CameraFace()));
   
   }
   
   void onViewPressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => Filter()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Filter()));
   
   }
   

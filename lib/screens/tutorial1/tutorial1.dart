@@ -55,7 +55,7 @@ class _Tutorial1State extends State<Tutorial1> with TickerProviderStateMixin {
   }
 
   void onItemPressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => Tutorial2()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Tutorial2()));
 
   }
   
@@ -73,7 +73,7 @@ class _Tutorial1State extends State<Tutorial1> with TickerProviderStateMixin {
           child: Column(
             children: [
               Container(
-                width: 116,
+                width: 147,
                 height: 26,
                 margin: EdgeInsets.only(top: 60),
                 child: Tutorial1WidgetAnimation1Element1(
@@ -86,7 +86,7 @@ class _Tutorial1State extends State<Tutorial1> with TickerProviderStateMixin {
                         child: Opacity(
                           opacity: 0.5,
                           child: Container(
-                            width: 153,
+                            width: 180,
                             height: 30,
                             decoration: BoxDecoration(
                               color: Color.fromARGB(255, 254, 215, 2),
@@ -154,61 +154,64 @@ class _Tutorial1State extends State<Tutorial1> with TickerProviderStateMixin {
                   ),
                 ),
               ),
-              Container(
-                width: 280,
-                height: 522,
-                margin: EdgeInsets.only(top: 29),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Positioned(
-                      top: 0,
-                      child: Container(
-                        width: 280,
-                        height: 522,
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 54, 54, 54),
-                          boxShadow: [
-                            Shadows.primaryShadow,
-                          ],
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                        ),
-                        child: Container(),
-                      ),
-                    ),
-                    Positioned(
-                      top: 48,
-                      child: Container(
-                        width: 252,
-                        height: 448,
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 0, 0, 0),
-                        ),
-                        child: Container(),
-                      ),
-                    ),
-                    Positioned(
-                      top: 48,
-                      child: Tutorial1WidgetAnimation1Element4(
-                        animationController: this.colorimageImageAnimationController,
-                        child: Image.asset(
-                          "assets/images/screen_capture_1.png",
-                          fit: BoxFit.none,
+              Expanded(
+                flex: 1,
+                child: Container(
+                  width: 280,
+                  margin: EdgeInsets.only(top: 29),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Positioned(
+                        top: 0,
+                        child: Container(
+                          width: 280,
+                          height: 522,
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryBackground,
+                            boxShadow: [
+                              Shadows.primaryShadow,
+                            ],
+                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                          ),
+                          child: Container(),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      top: 48,
-                      child: Tutorial1WidgetAnimation1Element3(
-                        animationController: this.faceimageImageAnimationController,
-                        child: Image.asset(
-                          "assets/images/screen_capture_2.png",
-                          fit: BoxFit.none,
+                      Positioned(
+                        top: 48,
+                        child: Container(
+                          width: 252,
+                          height: 448,
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
+                          child: Container(),
                         ),
                       ),
-                    ),
-                  ],
+                      Positioned(
+                        top: 48,
+                        child: Tutorial1WidgetAnimation1Element4(
+                          animationController: this.colorimageImageAnimationController,
+                          child: Image.asset(
+                            "assets/images/screen_capture_1.png",
+                            fit: BoxFit.none,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 48,
+                        child: Tutorial1WidgetAnimation1Element3(
+                          animationController: this.faceimageImageAnimationController,
+                          child: Image.asset(
+                            "assets/images/screen_capture_2.png",
+                            fit: BoxFit.none,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
+
               ),
             ],
           ),

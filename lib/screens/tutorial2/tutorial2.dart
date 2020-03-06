@@ -50,7 +50,7 @@ class _Tutorial2State extends State<Tutorial2> with TickerProviderStateMixin {
   }
 
   void onItemPressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => Tutorial3()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Tutorial3()));
 
   }
 

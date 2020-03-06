@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class Filter extends StatelessWidget {
   
   void onButtonThreePressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => Start()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Start()));
   
   }
   
