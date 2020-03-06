@@ -37,7 +37,12 @@ class _CameraColorState extends State<CameraColor> {
 
   void onViewPressed(BuildContext context) {}
 
-  void onButtonPressed(BuildContext context) {}
+  void onButtonPressed(BuildContext context) {
+    setState((){
+      _controller = CameraController(Camera().switchCamera(), ResolutionPreset.medium);
+      _initializeControllerFuture = _controller.initialize();
+    });
+  }
 
   void onButtonTwoPressed(BuildContext context) {
     Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -53,6 +58,7 @@ class _CameraColorState extends State<CameraColor> {
             if (snapshot.connectionState == ConnectionState.done) {
               return Column(
                 children: <Widget>[
+
                   Stack(
                     alignment: Alignment.center,
                     children: <Widget>[
