@@ -2,6 +2,8 @@ import 'package:camera/camera.dart';
 import 'package:cosmetic_app/screens/camera_color_check.dart';
 import 'package:cosmetic_app/utils/values/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 
 class CameraColor extends StatefulWidget {
   CameraDescription camera;
@@ -35,18 +37,37 @@ class _CameraColorState extends State<CameraColor> {
     super.dispose();
   }
 
-  void onViewPressed(BuildContext context) {}
+  void openGallery(BuildContext context) {}
 
-  void onButtonPressed(BuildContext context) {
-    setState((){
-      _controller = CameraController(Camera().switchCamera(), ResolutionPreset.medium);
+  void flip(BuildContext context) {
+    setState(() {
+      _controller =
+          CameraController(Camera().switchCamera(), ResolutionPreset.medium);
       _initializeControllerFuture = _controller.initialize();
     });
   }
 
-  void onButtonTwoPressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (BuildContext context) => CameraColorCheck()));
+  void snapshot(BuildContext context) async {
+    try {
+      await _initializeControllerFuture;
+
+      final path = join(
+        (await getTemporaryDirectory()).path,
+        '${DateTime.now()}.jpg',
+      );
+
+      await _controller.takePicture(path);
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CameraColorCheck(),
+        ),
+      );
+    } catch (e) {
+      // If an error occurs, log the error to the console.
+      print(e);
+    }
   }
 
   @override
@@ -58,7 +79,6 @@ class _CameraColorState extends State<CameraColor> {
             if (snapshot.connectionState == ConnectionState.done) {
               return Column(
                 children: <Widget>[
-
                   Stack(
                     alignment: Alignment.center,
                     children: <Widget>[
@@ -102,17 +122,17 @@ class _CameraColorState extends State<CameraColor> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(7))),
                           child: FlatButton(
-                            onPressed: () => this.onViewPressed(context),
+                            onPressed: () => this.openGallery(context),
                           ),
                         ),
                         FlatButton(
-                          onPressed: () => this.onButtonTwoPressed(context),
+                          onPressed: () => this.snapshot(context),
                           child: Image.asset(
                             "assets/images/camera_main.png",
                           ),
                         ),
                         FlatButton(
-                            onPressed: () => this.onButtonPressed(context),
+                            onPressed: () => this.flip(context),
                             child: Image.asset(
                               "assets/images/lotation.png",
                             )),
