@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class ColorAdd extends StatelessWidget {
   
   void onButtonPressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => ColorAddCheck()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => ColorAddCheck()));
   
   }
   

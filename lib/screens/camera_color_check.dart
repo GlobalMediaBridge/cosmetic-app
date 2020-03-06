@@ -9,12 +9,12 @@ import 'package:flutter/material.dart';
 class CameraColorCheck extends StatelessWidget {
   
   void onReturnPressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => CameraColor()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => CameraColor()));
   
   }
   
   void onButtonPressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => ColorSelect()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => ColorSelect()));
   
   }
 

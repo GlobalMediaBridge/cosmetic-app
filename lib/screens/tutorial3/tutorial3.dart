@@ -50,7 +50,7 @@ class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
   }
 
   void onItemPressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => Start()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Start()));
 
   }
   
@@ -149,49 +149,52 @@ class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
                   ),
                 ),
               ),
-              Spacer(),
-              Container(
-                width: 280,
-                height: 522,
-                margin: EdgeInsets.only(top: 29),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Positioned(
-                      top: 0,
-                      child: Container(
-                        width: 280,
-                        height: 522,
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryBackground,
-                          boxShadow: [
-                            Shadows.primaryShadow,
-                          ],
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  width: 280,
+                  margin: EdgeInsets.only(top: 29),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Positioned(
+                        top: 0,
+                        child: Container(
+                          width: 280,
+                          height: 522,
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryBackground,
+                            boxShadow: [
+                              Shadows.primaryShadow,
+                            ],
+                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                          ),
+                          child: Container(),
                         ),
-                        child: Container(),
                       ),
-                    ),
-                    Positioned(
-                      top: 48,
-                      child: Image.asset(
-                        "assets/images/screen_capture_3.png",
-                        fit: BoxFit.none,
-                      ),
-                    ),
-                    Positioned(
-                      top: 48,
-                      child: Tutorial3WidgetAnimation1Element3(
-                        animationController: this.selectlightfilterImageAnimationController,
+                      Positioned(
+                        top: 48,
                         child: Image.asset(
-                          "assets/images/screen_capture_4.png",
+                          "assets/images/screen_capture_3.png",
                           fit: BoxFit.none,
                         ),
                       ),
-                    ),
-                  ],
+                      Positioned(
+                        top: 48,
+                        child: Tutorial3WidgetAnimation1Element3(
+                          animationController: this.selectlightfilterImageAnimationController,
+                          child: Image.asset(
+                            "assets/images/screen_capture_4.png",
+                            fit: BoxFit.none,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
+
               ),
+
             ],
           ),
         ),

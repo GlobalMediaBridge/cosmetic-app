@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class ColorAddCheck extends StatelessWidget {
   
   void onButtonPressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => CameraFace()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => CameraFace()));
   
   }
   

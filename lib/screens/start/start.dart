@@ -41,16 +41,16 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
   }
   
   void onButtonTwoPressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => CameraColor()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => CameraColor()));
   }
   
   void onButtonThreePressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => Album()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Album()));
   
   }
   
   void onButtonPressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => Tutorial1()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Tutorial1()));
   }
   
   void startAnimationOne() {

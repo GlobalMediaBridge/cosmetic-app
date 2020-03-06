@@ -15,7 +15,7 @@ class CameraColor extends StatelessWidget {
   }
   
   void onButtonTwoPressed(BuildContext context) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => CameraColorCheck()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => CameraColorCheck()));
   
   }
   
