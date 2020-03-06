@@ -1,55 +1,57 @@
+import 'dart:async';
 
 import 'package:cosmetic_app/screens/splash/splash_animation1_element1.dart';
 import 'package:cosmetic_app/screens/splash/splash_animation1_element2.dart';
+import 'package:cosmetic_app/screens/start/start.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 
-
 class Splash extends StatefulWidget {
-  
   @override
   State<StatefulWidget> createState() => _SplashState();
 }
-
 
 class _SplashState extends State<Splash> with TickerProviderStateMixin {
   AnimationController logoTextAnimationController;
   AnimationController findyourcolorTextAnimationController;
   AnimationController LosQDQlNZMAnimationController;
-  
+
   @override
   void initState() {
-  
     super.initState();
-    
-    this.logoTextAnimationController = AnimationController(duration: Duration(milliseconds: 2000), vsync: this);
-    this.findyourcolorTextAnimationController = AnimationController(duration: Duration(milliseconds: 2000), vsync: this);
-    this.LosQDQlNZMAnimationController = AnimationController(duration: Duration(milliseconds: 0), vsync: this);
-    
+
+    this.logoTextAnimationController = AnimationController(
+        duration: Duration(milliseconds: 2000), vsync: this);
+    this.findyourcolorTextAnimationController = AnimationController(
+        duration: Duration(milliseconds: 2000), vsync: this);
+    this.LosQDQlNZMAnimationController =
+        AnimationController(duration: Duration(milliseconds: 0), vsync: this);
+
     this.startAnimationOne();
   }
-  
+
   @override
   void dispose() {
-  
     super.dispose();
-    
+
     this.logoTextAnimationController.dispose();
     this.findyourcolorTextAnimationController.dispose();
     this.LosQDQlNZMAnimationController.dispose();
   }
-  
+
   void startAnimationOne() {
-  
     this.logoTextAnimationController.forward();
     this.findyourcolorTextAnimationController.forward();
     this.LosQDQlNZMAnimationController.forward();
+    Timer(Duration(milliseconds: 2000), () {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (BuildContext context) => Start()));
+    });
   }
-  
+
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
       body: Container(
         constraints: BoxConstraints.expand(),
@@ -63,7 +65,8 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
               child: Opacity(
                 opacity: 1,
                 child: SplashWidgetAnimation1Element2(
-                  animationController: this.findyourcolorTextAnimationController,
+                  animationController:
+                      this.findyourcolorTextAnimationController,
                   child: Text(
                     "Find your color!",
                     textAlign: TextAlign.center,
@@ -97,5 +100,4 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
       ),
     );
   }
-
 }
