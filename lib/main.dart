@@ -4,7 +4,11 @@ import 'package:cosmetic_app/store/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(App());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Camera();
+  runApp(App());
+}
 
 class App extends StatelessWidget {
   @override
