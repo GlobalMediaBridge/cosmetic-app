@@ -1,14 +1,18 @@
 import 'package:camera/camera.dart';
-import 'package:flutter/cupertino.dart';
 
-class Camera with ChangeNotifier {
-  CameraDescription backCamera;
-  CameraDescription frontCamera;
+class Camera {
+  static final Camera _instance = Camera._internal();
+  CameraDescription _backCamera;
+  CameraDescription _frontCamera;
 
-  Camera() {
+  factory Camera() {
+    return _instance;
+  }
+
+  Camera._internal() {
     availableCameras().then((List<CameraDescription> cameraList){
-      backCamera = cameraList[0];
-      frontCamera = cameraList[1];
+      _backCamera = cameraList[0];
+      _frontCamera = cameraList[1];
       print('=======================================');
       print('=======================================');
       print('=======================================');
@@ -19,12 +23,11 @@ class Camera with ChangeNotifier {
   }
 
   CameraDescription getBackCamera(){
-    return backCamera;
+    return _backCamera;
   }
 
   CameraDescription getFrontCamera(){
-    return frontCamera;
+    return _frontCamera;
   }
-
 
 }
