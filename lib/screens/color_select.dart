@@ -151,14 +151,20 @@ class _ColorSelectState extends State<ColorSelect> {
                             GestureDetector(
                               onTap: () {
                                 if (nowColor == null) {
-                                  print('선택하시오');
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) => AlertDialog(content:Text("화장품 발색 영역을 선택해주세요.")),
+                                  );
                                   return;
                                 }
                                 if (Provider.of<Palette>(context, listen: false)
                                         .colors
                                         .length ==
                                     5) {
-                                  print('5개 까지만 된다');
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) => AlertDialog(content:Text("최대 5개 까지 선택할 수 있습니다.")),
+                                  );
                                   return;
                                 }
                                 Provider.of<Palette>(context, listen: false)
