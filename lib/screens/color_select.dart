@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cosmetic_app/screens/camera_face.dart';
 import 'package:cosmetic_app/store/palette.dart';
 import 'package:cosmetic_app/store/server.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
@@ -18,7 +19,13 @@ class ColorSelect extends StatefulWidget {
 
 class _ColorSelectState extends State<ColorSelect> {
   bool showArea = false;
+  bool next = false;
   Color nowColor;
+
+  void onNextPressed(BuildContext context) {
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (BuildContext context) => CameraFace()));
+  }
 
   Widget _buildColorList(BuildContext context, Palette palette) {
     List<Widget> list = [];
@@ -90,30 +97,52 @@ class _ColorSelectState extends State<ColorSelect> {
                               : Image.file(widget.preview))),
                   Positioned(
                     top: 24,
-                    child: Container(
-                      width: 330,
-                      height: 28,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(128, 255, 255, 255),
-                        borderRadius: BorderRadius.all(Radius.circular(14)),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            showArea ? "+ 버튼을 눌러 색상을 추가해주세요" : "화장품 발색 영역을 선택해주세요.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: AppColors.primaryText,
-                              fontFamily: "NanumBarunGothic",
-                              fontWeight: FontWeight.w700,
-                              fontSize: 14,
+                    right: 19,
+                    child: next
+                        ? FlatButton(
+                            onPressed: () => this.onNextPressed(context),
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                            ),
+                            textColor: Color.fromARGB(255, 247, 7, 70),
+                            padding: EdgeInsets.all(0),
+                            child: Text(
+                              "다음",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: AppColors.primaryText,
+                                fontFamily: "NanumBarunGothic",
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                              ),
+                            ),
+                          )
+                        : Container(
+                            width: 330,
+                            height: 28,
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(128, 255, 255, 255),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(14)),
+                            ),
+                            child: Center(
+                              child: Text(
+                                showArea
+                                    ? "+ 버튼을 눌러 색상을 추가해주세요"
+                                    : "화장품 발색 영역을 선택해주세요.",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: AppColors.primaryText,
+                                  fontFamily: "NanumBarunGothic",
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14,
+                                ),
+                              ),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  )
                 ],
               ),
             ),
@@ -162,6 +191,7 @@ class _ColorSelectState extends State<ColorSelect> {
                             setState(() {
                               nowColor = null;
                               showArea = false;
+                              next = true;
                             });
                           },
                           child: Text(
