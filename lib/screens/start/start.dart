@@ -68,132 +68,127 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
         decoration: BoxDecoration(
           color: Color.fromARGB(255, 247, 7, 70),
         ),
-        child: Container(
-          decoration: BoxDecoration(border:Border.all(color: Colors.blue)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                child: Center(
-                  child: StartWidgetAnimation1Element1(
-                    animationController: this.logoTextAnimationController,
-                    child: Text(
-                        "logo",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 254, 215, 2),
-                          fontFamily: "Lobster 1.4",
-                          fontWeight: FontWeight.w400,
-                          fontSize: 40,
-                      )
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                width: 367,
-                height: 166,
-                margin: EdgeInsets.only(top: 28),
-                child: StartWidgetAnimation1Element2(
-                  animationController: this.buttongroupAnimationController,
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 310,
-                        height: 46,
-                        child: FlatButton(
-                          onPressed: () => this.onButtonTwoPressed(context),
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(23)),
-                          ),
-                          textColor: Color.fromARGB(255, 247, 7, 70),
-                          padding: EdgeInsets.all(0),
-                          child: Text(
-                            "시작하기",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: AppColors.primaryText,
-                              fontFamily: "NanumBarunGothic",
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 310,
-                        height: 46,
-                        margin: EdgeInsets.only(top: 14),
-                        child: FlatButton(
-                          onPressed: () => this.onButtonThreePressed(context),
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(23)),
-                          ),
-                          textColor: Color.fromARGB(255, 247, 7, 70),
-                          padding: EdgeInsets.all(0),
-                          child: Text(
-                            "사진앨범",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: AppColors.primaryText,
-                              fontFamily: "NanumBarunGothic",
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 310,
-                        height: 46,
-                        margin: EdgeInsets.only(top: 14),
-                        child: FlatButton(
-                          onPressed: () => this.onButtonPressed(context),
-                          color: AppColors.primaryText,
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              width: 2,
-                              style: BorderStyle.solid,
-                            ),
-                            borderRadius: BorderRadius.all(Radius.circular(23)),
-                          ),
-                          textColor: Color.fromARGB(255, 255, 255, 255),
-                          padding: EdgeInsets.all(0),
-                          child: Text(
-                            "사용설명",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              fontFamily: "NanumBarunGothic",
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Spacer(),
-              Container(
-                margin: EdgeInsets.only(bottom: 20),
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 230),
+              child: StartWidgetAnimation1Element1(
+                animationController: this.logoTextAnimationController,
                 child: Text(
-                  "© 2020 app name",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 0, 0, 0),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    height: 1.14286,
-                  ),
+                    "logo",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 254, 215, 2),
+                      fontFamily: "Lobster 1.4",
+                      fontWeight: FontWeight.w400,
+                      fontSize: 40,
+                  )
                 ),
               ),
-            ],
-          ),
+            ),
+            Container(
+              width: 367,
+              height: 166,
+              margin: EdgeInsets.only(top: 28),
+              child: StartWidgetAnimation1Element2(
+                animationController: this.buttongroupAnimationController,
+                child: Column(
+                  children: [
+                    Container(
+                      width: 310,
+                      height: 46,
+                      child: FlatButton(
+                        onPressed: () => this.onButtonTwoPressed(context),
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(23)),
+                        ),
+                        textColor: Color.fromARGB(255, 247, 7, 70),
+                        padding: EdgeInsets.all(0),
+                        child: Text(
+                          "시작하기",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: AppColors.primaryText,
+                            fontFamily: "NanumBarunGothic",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 310,
+                      height: 46,
+                      margin: EdgeInsets.only(top: 14),
+                      child: FlatButton(
+                        onPressed: () => this.onButtonThreePressed(context),
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(23)),
+                        ),
+                        textColor: Color.fromARGB(255, 247, 7, 70),
+                        padding: EdgeInsets.all(0),
+                        child: Text(
+                          "사진앨범",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: AppColors.primaryText,
+                            fontFamily: "NanumBarunGothic",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 310,
+                      height: 46,
+                      margin: EdgeInsets.only(top: 14),
+                      child: FlatButton(
+                        onPressed: () => this.onButtonPressed(context),
+                        color: AppColors.primaryText,
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            width: 2,
+                            style: BorderStyle.solid,
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(23)),
+                        ),
+                        textColor: Color.fromARGB(255, 255, 255, 255),
+                        padding: EdgeInsets.all(0),
+                        child: Text(
+                          "사용설명",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: "NanumBarunGothic",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Spacer(),
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              child: Text(
+                "© 2020 app name",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  height: 1.14286,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

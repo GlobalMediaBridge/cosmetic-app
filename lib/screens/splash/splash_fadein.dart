@@ -15,30 +15,30 @@ Animation<double> _createOpacityProperty(AnimationController animationController
 ));
 
 
-class SplashWidgetAnimation1Element1 extends StatelessWidget {
-  
-  SplashWidgetAnimation1Element1({
+class SplashFadeIn extends StatelessWidget {
+
+  SplashFadeIn({
     Key key,
     this.child,
     @required AnimationController animationController
   }) : assert(animationController != null),
-       this.opacity = _createOpacityProperty(animationController),
-       super(key: key);
-  
+        this.opacity = _createOpacityProperty(animationController),
+        super(key: key);
+
   final Animation<double> opacity;
   final Widget child;
-  
-  
+
+
   @override
   Widget build(BuildContext context) {
-  
+
     return AnimatedBuilder(
       animation: Listenable.merge([
         this.opacity,
       ]),
       child: this.child,
       builder: (context, widget) {
-      
+
         return Opacity(
           opacity: this.opacity.value,
           child: widget,
@@ -48,3 +48,4 @@ class SplashWidgetAnimation1Element1 extends StatelessWidget {
   }
 
 }
+
