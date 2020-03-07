@@ -4,8 +4,11 @@ import 'dart:io';
 import 'package:cosmetic_app/screens/camera_face.dart';
 import 'package:cosmetic_app/screens/color_select.dart';
 import 'package:cosmetic_app/screens/filter.dart';
+import 'package:cosmetic_app/store/palette.dart';
+import 'package:cosmetic_app/store/server.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 class CameraFaceCheck extends StatelessWidget {
@@ -19,8 +22,9 @@ class CameraFaceCheck extends StatelessWidget {
   }
   
   void onViewPressed(BuildContext context) {
+    String id = Provider.of<Palette>(context, listen: false).getId();
+    Server.uploadFace(id, preview);
     Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Filter()));
-  
   }
   
   @override
