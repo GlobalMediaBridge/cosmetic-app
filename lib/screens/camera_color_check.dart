@@ -30,6 +30,60 @@ class CameraColorCheck extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+
+    return Scaffold(
+      body: Container(
+          constraints: BoxConstraints.expand(),
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 255, 255, 255),
+          ),
+          child: Column(
+            children:[
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                 Image.file(preview),
+                ],
+              ),
+              Expanded(
+                  child: Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          FlatButton(
+                            onPressed: () => this.onReturnPressed(context),
+                            child: Image.asset(
+                              "assets/images/back.png",
+                            ),
+                          ),
+                          FlatButton(
+                            onPressed: () => this.onButtonPressed(context),
+                            child: Image.asset(
+                              "assets/images/next.png",
+                            ),
+                          ),
+                          FlatButton(
+                            child: Image.asset(
+                              "assets/images/next.png",
+                            )
+                          )
+                        ],
+
+                      )
+
+                  )
+
+              )
+
+
+            ]
+          )
+
+
+      )
+
+    );
+
     return Scaffold(
       body: Container(
         constraints: BoxConstraints.expand(),
@@ -86,30 +140,7 @@ class CameraColorCheck extends StatelessWidget {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Text(
-                                  "",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 0, 0, 0),
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 12,
-                                  ),
-                                ),
                               ],
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 55,
-                          bottom: 52,
-                          child: Text(
-                            "취소",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 247, 7, 70),
-                              fontFamily: "NanumBarunGothic",
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -117,13 +148,6 @@ class CameraColorCheck extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
-            ),
-            Positioned(
-              bottom: 51,
-              child: Image.asset(
-                "assets/images/next_background.png",
-                fit: BoxFit.none,
               ),
             ),
             Positioned(
@@ -142,15 +166,6 @@ class CameraColorCheck extends StatelessWidget {
                     Image.asset("assets/images/next.png",),
                     SizedBox(
                       width: 10,
-                    ),
-                    Text(
-                      "",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                      ),
                     ),
                   ],
                 ),
