@@ -20,7 +20,26 @@ class _ColorSelectState extends State<ColorSelect> {
   bool showArea = false;
   Color nowColor;
 
-  void getColor({int x = 0, int y = 0}) {}
+  Widget _buildColorList(BuildContext context, Palette palette) {
+    List<Widget> list = [];
+    for (int i = 0; i < 5; i++) {
+      Color color = palette.getColor(i);
+      list.add(Container(
+        height: 80,
+        width: MediaQuery.of(context).size.width / 6.toInt(),
+        decoration: BoxDecoration(
+          color: color == null ? Color.fromARGB(255, 174, 174, 174) : color,
+          borderRadius: Radii.k5pxRadius,
+        ),
+        child: Container(),
+      ));
+    }
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: list,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,101 +136,56 @@ class _ColorSelectState extends State<ColorSelect> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "Color palette",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: AppColors.primaryText,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              "Color palette",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: AppColors.primaryText,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                              ),
                             ),
-                          ),
+                            GestureDetector(
+                              onTap: () {
+                                if (nowColor == null) {
+                                  print('선택하시오');
+                                  return;
+                                }
+                                if (Provider.of<Palette>(context, listen: false)
+                                        .colors
+                                        .length ==
+                                    5) {
+                                  print('5개 까지만 된다');
+                                  return;
+                                }
+                                Provider.of<Palette>(context, listen: false)
+                                    .addColor(nowColor);
+                                imageCache.clear();
+                                setState(() {
+                                  nowColor = null;
+                                  showArea = false;
+                                });
+                              },
+                              child: Text(
+                                "+",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  color: AppColors.primaryText,
+                                  fontFamily: "NanumBarunGothic",
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 24,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                         Spacer(),
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: GestureDetector(
-                                    onTap: (){
-                                      if(nowColor != null){
-                                        Provider.of<Palette>(context, listen: false)
-                                            .addColor(nowColor);
-                                        imageCache.clear();
-                                        setState((){
-                                          nowColor = null;
-                                          showArea = false;
-                                        });
-                                      }
-                                    },
-                                    child: Container(
-                                      height: 81,
-                                      decoration: BoxDecoration(
-                                        color: Color.fromARGB(255, 174, 174, 174),
-                                        borderRadius: Radii.k5pxRadius,
-                                      ),
-                                      child: Container(),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: 81,
-                                    margin: EdgeInsets.only(left: 10),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 174, 174, 174),
-                                      borderRadius: Radii.k5pxRadius,
-                                    ),
-                                    child: Container(),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: 81,
-                                    margin: EdgeInsets.only(left: 10),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 174, 174, 174),
-                                      borderRadius: Radii.k5pxRadius,
-                                    ),
-                                    child: Container(),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: 81,
-                                    margin: EdgeInsets.only(left: 10),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 174, 174, 174),
-                                      borderRadius: Radii.k5pxRadius,
-                                    ),
-                                    child: Container(),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: 81,
-                                    margin: EdgeInsets.only(left: 10),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 174, 174, 174),
-                                      borderRadius: Radii.k5pxRadius,
-                                    ),
-                                    child: Container(),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                        Consumer<Palette>(
+                            builder: (context, value, child) =>
+                                _buildColorList(context, value))
                       ],
                     ),
                   ),

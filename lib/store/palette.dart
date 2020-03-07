@@ -19,7 +19,14 @@ class Palette with ChangeNotifier {
   }
 
   Color getColor(int index) {
-    return colors.elementAt(index);
+    if(index < colors.length) {
+      return colors.elementAt(index);
+    }
+    return null;
+  }
+
+  List<Color> getColorList() {
+    return colors;
   }
 
 
