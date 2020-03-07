@@ -24,7 +24,7 @@ class CameraColorCheck extends StatelessWidget {
   void onButtonPressed(BuildContext context) async {
     String id = await Server.uploadPalette(preview);
     Provider.of<Palette>(context, listen: false).setId(id);
-    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => ColorSelect()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => ColorSelect(preview: preview)));
   }
 
   @override

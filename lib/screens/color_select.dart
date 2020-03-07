@@ -1,13 +1,20 @@
+import 'dart:io';
 
+import 'package:cosmetic_app/store/palette.dart';
+import 'package:cosmetic_app/store/server.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 
 class ColorSelect extends StatelessWidget {
-  
+  File preview;
+
+  ColorSelect({@required this.preview});
+
+  void getColor({int x = 0, int y = 0}) {}
+
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
       body: Container(
         constraints: BoxConstraints.expand(),
@@ -23,17 +30,18 @@ class ColorSelect extends StatelessWidget {
                 alignment: Alignment.center,
                 children: [
                   Positioned(
-                    left: 0,
-                    top: 0,
-                    right: 0,
-                    child: Container(
-                      height: 500,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                      ),
-                      child: Container(),
-                    ),
-                  ),
+                      left: 0,
+                      top: 0,
+                      right: 0,
+                      child: GestureDetector(
+                          onTapUp: (TapUpDetails details) async {
+                            Color color = await Server.extractColor(
+                                Provider.of<Palette>(context, listen: false).getId(),
+                                details.localPosition.dx.toInt(),
+                                details.localPosition.dy.toInt());
+                            Provider.of<Palette>(context, listen: false).addColor(color);
+                          },
+                          child: Image.file(preview))),
                   Positioned(
                     top: 24,
                     child: Container(

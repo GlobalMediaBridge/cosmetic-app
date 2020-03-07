@@ -38,7 +38,7 @@ class Server {
         headers: {"id": id},
       ),
     );
-    List<double> data = response.data;
+    List<dynamic> data = response.data;
     Color color = Color.fromARGB(data[3].toInt(), data[2].toInt(), data[1].toInt(), data[0].toInt());
     return color;
   }
