@@ -17,7 +17,7 @@ class CameraFaceCheck extends StatelessWidget {
   CameraFaceCheck({@required this.preview});
   
   void onReturnPressed(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => CameraFace()));
+    Navigator.of(context).pop();
   
   }
   
