@@ -34,43 +34,41 @@ class CameraColorCheck extends StatelessWidget {
     return Scaffold(
       body: Container(
           constraints: BoxConstraints.expand(),
-          decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 255, 255),
-          ),
+
           child: Column(
+
             children:[
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                 Image.file(preview),
-                ],
-              ),
+              Image.file(preview),
               Expanded(
                   child: Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          FlatButton(
-                            onPressed: () => this.onReturnPressed(context),
-                            child: Image.asset(
-                              "assets/images/back.png",
-                            ),
+                    margin: EdgeInsets.only(bottom: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        FlatButton(
+                          onPressed: () => this.onReturnPressed(context),
+                          child: Image.asset(
+                            "assets/images/back.png",
                           ),
-                          FlatButton(
-                            onPressed: () => this.onButtonPressed(context),
+                        ),
+                        FlatButton(
+                          onPressed: () => this.onButtonPressed(context),
+                          child: Image.asset(
+                            "assets/images/next.png",
+                          ),
+                        ),
+                        FlatButton(
+                          child: Opacity(
+                            opacity: 0,
                             child: Image.asset(
                               "assets/images/next.png",
                             ),
                           ),
-                          FlatButton(
-                            child: Image.asset(
-                              "assets/images/next.png",
-                            )
-                          )
-                        ],
+                        )
+                      ],
 
-                      )
-
+                    ),
                   )
 
               )
