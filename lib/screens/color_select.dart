@@ -101,7 +101,7 @@ class _ColorSelectState extends State<ColorSelect> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "화장품 발색 영역을 선택해주세요.",
+                            showArea ? "+ 버튼을 눌러 색상을 추가해주세요" : "화장품 발색 영역을 선택해주세요.",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: AppColors.primaryText,
