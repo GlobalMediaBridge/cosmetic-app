@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class Server {
-  static final String url = "http://localhost:5000";
+  static final String url = "http://ec2-13-125-153-38.ap-northeast-2.compute.amazonaws.com:5000";
   static final Dio dio = Dio();
 
   static Future<String> uploadPalette(File image) async {
@@ -38,7 +38,7 @@ class Server {
         headers: {"id": id},
       ),
     );
-    List<double> data = response.data;
+    List<dynamic> data = response.data;
     Color color = Color.fromARGB(data[3].toInt(), data[2].toInt(), data[1].toInt(), data[0].toInt());
     return color;
   }
