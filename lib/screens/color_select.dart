@@ -19,13 +19,12 @@ class ColorSelect extends StatefulWidget {
 class _ColorSelectState extends State<ColorSelect> {
   bool showArea = false;
   Color nowColor;
-
   Widget _buildColorList(BuildContext context, Palette palette) {
     List<Widget> list = [];
     for (int i = 0; i < 5; i++) {
       Color color = palette.getColor(i);
       list.add(Container(
-        height: 80,
+        height: MediaQuery.of(context).size.width / 5.toInt(),
         width: MediaQuery.of(context).size.width / 6.toInt(),
         decoration: BoxDecoration(
           color: color == null ? Color.fromARGB(255, 174, 174, 174) : color,
