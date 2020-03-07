@@ -17,7 +17,7 @@ class CameraColorCheck extends StatelessWidget {
   CameraColorCheck({@required this.preview});
   
   void onReturnPressed(BuildContext context) {
-    Navigator.of(context).pop(MaterialPageRoute(builder: (BuildContext context) => CameraColor()));
+    Navigator.of(context).pop();
   
   }
   
