@@ -30,10 +30,10 @@ class Server {
     return response.data.toString();
   }
 
-  static Future<Color> extractColor(String id, int x, int y) async {
+  static Future<Color> extractColor(String id, int x, int y, int width) async {
     Response response = await dio.post(
       "$url/extract",
-      data: {"x": x, "y": y},
+      data: {"x": x, "y": y, "width": width},
       options: Options(
         headers: {"id": id},
       ),

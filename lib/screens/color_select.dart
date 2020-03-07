@@ -6,10 +6,17 @@ import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ColorSelect extends StatelessWidget {
+class ColorSelect extends StatefulWidget {
   File preview;
 
   ColorSelect({@required this.preview});
+
+  @override
+  _ColorSelectState createState() => _ColorSelectState();
+}
+
+class _ColorSelectState extends State<ColorSelect> {
+  bool showArea = false;
 
   void getColor({int x = 0, int y = 0}) {}
 
@@ -35,13 +42,27 @@ class ColorSelect extends StatelessWidget {
                       right: 0,
                       child: GestureDetector(
                           onTapUp: (TapUpDetails details) async {
+                            print('x: ${details.localPosition.dx.toInt()}');
+                            print('y: ${details.localPosition.dy.toInt()}');
+                            print(
+                                'width: ${MediaQuery.of(context).size.width.toInt()}');
+
                             Color color = await Server.extractColor(
-                                Provider.of<Palette>(context, listen: false).getId(),
+                                Provider.of<Palette>(context, listen: false)
+                                    .getId(),
                                 details.localPosition.dx.toInt(),
-                                details.localPosition.dy.toInt());
-                            Provider.of<Palette>(context, listen: false).addColor(color);
+                                details.localPosition.dy.toInt(),
+                                MediaQuery.of(context).size.width.toInt());
+                            setState(() {
+                              showArea = true;
+                            });
+                            Provider.of<Palette>(context, listen: false)
+                                .addColor(color);
                           },
-                          child: Image.file(preview))),
+                          child: showArea
+                              ? Image.network(
+                                  "${Server.url}/area/${Provider.of<Palette>(context).getId()}")
+                              : Image.file(widget.preview))),
                   Positioned(
                     top: 24,
                     child: Container(
