@@ -111,90 +111,69 @@ class _ColorSelectState extends State<ColorSelect> {
               ),
             ),
             Expanded(
-              flex: 1,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Positioned(
-                    left: 0,
-                    top: 0,
-                    child: Container(
-                      width: 375,
-                      height: 167,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                      ),
-                      child: Container(),
-                    ),
-                  ),
-                  Positioned(
-                    left: 25,
-                    top: 25,
-                    right: 25,
-                    bottom: 32,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              "Color palette",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                color: AppColors.primaryText,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14,
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                if (nowColor == null) {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) => AlertDialog(content:Text("화장품 발색 영역을 선택해주세요.")),
-                                  );
-                                  return;
-                                }
-                                if (Provider.of<Palette>(context, listen: false)
-                                        .colors
-                                        .length ==
-                                    5) {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) => AlertDialog(content:Text("최대 5개 까지 선택할 수 있습니다.")),
-                                  );
-                                  return;
-                                }
-                                Provider.of<Palette>(context, listen: false)
-                                    .addColor(nowColor);
-                                imageCache.clear();
-                                setState(() {
-                                  nowColor = null;
-                                  showArea = false;
-                                });
-                              },
-                              child: Text(
-                                "+",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  color: AppColors.primaryText,
-                                  fontFamily: "NanumBarunGothic",
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 24,
-                                ),
-                              ),
-                            )
-                          ],
+              child: Padding(
+                padding: const EdgeInsets.only(left: 25, top: 25, right: 25, bottom: 32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          "Color palette",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: AppColors.primaryText,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                          ),
                         ),
-                        Spacer(),
-                        Consumer<Palette>(
-                            builder: (context, value, child) =>
-                                _buildColorList(context, value))
+                        GestureDetector(
+                          onTap: () {
+                            if (nowColor == null) {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(content:Text("화장품 발색 영역을 선택해주세요.")),
+                              );
+                              return;
+                            }
+                            if (Provider.of<Palette>(context, listen: false)
+                                    .colors
+                                    .length ==
+                                5) {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(content:Text("최대 5개 까지 선택할 수 있습니다.")),
+                              );
+                              return;
+                            }
+                            Provider.of<Palette>(context, listen: false)
+                                .addColor(nowColor);
+                            imageCache.clear();
+                            setState(() {
+                              nowColor = null;
+                              showArea = false;
+                            });
+                          },
+                          child: Text(
+                            "+",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              color: AppColors.primaryText,
+                              fontFamily: "NanumBarunGothic",
+                              fontWeight: FontWeight.w700,
+                              fontSize: 24,
+                            ),
+                          ),
+                        )
                       ],
                     ),
-                  ),
-                ],
+                    Spacer(),
+                    Consumer<Palette>(
+                        builder: (context, value, child) =>
+                            _buildColorList(context, value))
+                  ],
+                ),
               ),
             ),
           ],
