@@ -8,18 +8,27 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
-class CameraColor extends StatefulWidget {
+
+class CameraColor extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CameraView();
+  }
+}
+
+
+class CameraView extends StatefulWidget {
   CameraDescription camera;
 
-  CameraColor() {
+  CameraView() {
     camera = Camera().getBackCamera();
   }
 
   @override
-  _CameraColorState createState() => _CameraColorState();
+  _CameraViewState createState() => _CameraViewState();
 }
 
-class _CameraColorState extends State<CameraColor> {
+class _CameraViewState extends State<CameraView> {
   CameraController _controller;
   Future<void> _initializeControllerFuture;
 

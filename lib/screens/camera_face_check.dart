@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:cosmetic_app/screens/camera_face.dart';
 import 'package:cosmetic_app/screens/color_select.dart';
 import 'package:cosmetic_app/screens/filter.dart';
@@ -7,6 +9,9 @@ import 'package:flutter/material.dart';
 
 
 class CameraFaceCheck extends StatelessWidget {
+  File preview;
+
+  CameraFaceCheck({@required this.preview});
   
   void onReturnPressed(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => CameraFace()));
@@ -39,11 +44,7 @@ class CameraFaceCheck extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Container(
-                    height: 500,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                    ),
-                    child: Container(),
+                    child: Image.file(preview),
                   ),
                   Spacer(),
                   Container(
