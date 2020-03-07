@@ -141,15 +141,10 @@ class _CameraViewState extends State<CameraView> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
-                            Container(
-                              width: 46,
-                              height: 46,
-                              decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(7))),
-                              child: FlatButton(
-                                onPressed: () => this.openGallery(context),
+                            FlatButton(
+                              onPressed: () => this.openGallery(context),
+                              child: Image.asset(
+                                "assets/images/album.png",
                               ),
                             ),
                             FlatButton(
