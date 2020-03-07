@@ -52,99 +52,77 @@ class _ColorSelectState extends State<ColorSelect> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        constraints: BoxConstraints.expand(),
-        decoration: BoxDecoration(
-          color: Color.fromARGB(255, 255, 255, 255),
-        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              height: 500,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Positioned(
-                      left: 0,
-                      top: 0,
-                      right: 0,
-                      child: Image.file(widget.preview)),
-                  Positioned(
-                      left: 0,
-                      top: 0,
-                      right: 0,
-                      child: GestureDetector(
-                          onTapUp: (TapUpDetails details) async {
-                            setState(() {
-                              showArea = false;
-                              nowColor = null;
-                            });
-                            Color color = await Server.extractColor(
-                                Provider.of<Palette>(context, listen: false)
-                                    .getId(),
-                                details.localPosition.dx.toInt(),
-                                details.localPosition.dy.toInt(),
-                                MediaQuery.of(context).size.width.toInt());
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Image.file(widget.preview),
+                GestureDetector(
+                    onTapUp: (TapUpDetails details) async {
+                      Color color = await Server.extractColor(
+                          Provider.of<Palette>(context, listen: false).getId(),
+                          details.localPosition.dx.toInt(),
+                          details.localPosition.dy.toInt(),
+                          MediaQuery.of(context).size.width.toInt());
 
-                            setState(() {
-                              showArea = true;
-                              nowColor = color;
-                            });
-                          },
-                          child: showArea
-                              ? Image.network(
-                                  "${Server.url}/area/${Provider.of<Palette>(context).getId()}/${nowColor.value}")
-                              : Image.file(widget.preview))),
-                  Positioned(
-                    top: 24,
-                    right: 19,
-                    child: next
-                        ? FlatButton(
-                            onPressed: () => this.onNextPressed(context),
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                      setState(() {
+                        showArea = true;
+                        nowColor = color;
+                      });
+                    },
+                    child: showArea
+                        ? Image.network(
+                            "${Server.url}/area/${Provider.of<Palette>(context).getId()}/${nowColor.value}")
+                        : Image.file(widget.preview)),
+                Positioned(
+                  top: 24,
+                  right: 19,
+                  child: next
+                      ? FlatButton(
+                          onPressed: () => this.onNextPressed(context),
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                          textColor: Color.fromARGB(255, 247, 7, 70),
+                          padding: EdgeInsets.all(0),
+                          child: Text(
+                            "다음",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              color: AppColors.primaryText,
+                              fontFamily: "NanumBarunGothic",
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
                             ),
-                            textColor: Color.fromARGB(255, 247, 7, 70),
-                            padding: EdgeInsets.all(0),
+                          ),
+                        )
+                      : Container(
+                          width: 330,
+                          height: 28,
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(128, 255, 255, 255),
+                            borderRadius: BorderRadius.all(Radius.circular(14)),
+                          ),
+                          child: Center(
                             child: Text(
-                              "다음",
-                              textAlign: TextAlign.left,
+                              showArea
+                                  ? "+ 버튼을 눌러 색상을 추가해주세요"
+                                  : "화장품 발색 영역을 선택해주세요.",
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: AppColors.primaryText,
                                 fontFamily: "NanumBarunGothic",
-                                fontWeight: FontWeight.w400,
-                                fontSize: 16,
-                              ),
-                            ),
-                          )
-                        : Container(
-                            width: 330,
-                            height: 28,
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(128, 255, 255, 255),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(14)),
-                            ),
-                            child: Center(
-                              child: Text(
-                                showArea
-                                    ? "+ 버튼을 눌러 색상을 추가해주세요"
-                                    : "화장품 발색 영역을 선택해주세요.",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: AppColors.primaryText,
-                                  fontFamily: "NanumBarunGothic",
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 14,
-                                ),
+                                fontWeight: FontWeight.w700,
+                                fontSize: 14,
                               ),
                             ),
                           ),
-                  )
-                ],
-              ),
+                        ),
+                )
+              ],
             ),
             Expanded(
               child: Padding(
