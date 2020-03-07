@@ -22,6 +22,7 @@ class CameraView extends StatefulWidget {
 
   CameraView() {
     camera = Camera().getFrontCamera();
+    Camera().selectedCamera = "front";
   }
 
   @override
