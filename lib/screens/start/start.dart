@@ -64,9 +64,11 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
   
     return Scaffold(
       body: Container(
-        color: Color.fromARGB(255, 247, 7, 70),
+        constraints: BoxConstraints.expand(),
+        decoration: BoxDecoration(
+          color: Color.fromARGB(255, 247, 7, 70),
+        ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
               margin: EdgeInsets.only(top: 230),
@@ -85,6 +87,8 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
               ),
             ),
             Container(
+              width: 367,
+              height: 166,
               margin: EdgeInsets.only(top: 28),
               child: StartWidgetAnimation1Element2(
                 animationController: this.buttongroupAnimationController,
@@ -127,7 +131,7 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
                         padding: EdgeInsets.all(0),
                         child: Text(
                           "사진앨범",
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.left,
                           style: TextStyle(
                             color: AppColors.primaryText,
                             fontFamily: "NanumBarunGothic",
@@ -156,7 +160,7 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
                         padding: EdgeInsets.all(0),
                         child: Text(
                           "사용설명",
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.left,
                           style: TextStyle(
                             color: Color.fromARGB(255, 255, 255, 255),
                             fontFamily: "NanumBarunGothic",
@@ -175,11 +179,12 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
               margin: EdgeInsets.only(bottom: 20),
               child: Text(
                 "© 2020 app name",
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.left,
                 style: TextStyle(
                   color: Color.fromARGB(255, 0, 0, 0),
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
+                  height: 1.14286,
                 ),
               ),
             ),

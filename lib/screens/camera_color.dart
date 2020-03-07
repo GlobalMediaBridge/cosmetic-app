@@ -138,31 +138,26 @@ class _CameraViewState extends State<CameraView> {
                   ),
                   Expanded(
                       child: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        Container(
-                          width: 46,
-                          height: 46,
-                          decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(7))),
-                          child: FlatButton(
-                            onPressed: () => this.openGallery(context),
-                          ),
-                        ),
-                        FlatButton(
-                          onPressed: () => this.snapshot(context),
-                          child: Image.asset(
-                            "assets/images/camera_main.png",
-                          ),
-                        ),
-                        FlatButton(
-                            onPressed: () => this.flip(context),
-                            child: Image.asset(
-                              "assets/images/lotation.png",
-                            )),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            FlatButton(
+                              onPressed: () => this.openGallery(context),
+                              child: Image.asset(
+                                "assets/images/album.png",
+                              ),
+                            ),
+                            FlatButton(
+                              onPressed: () => this.snapshot(context),
+                              child: Image.asset(
+                                "assets/images/camera_main.png",
+                              ),
+                            ),
+                            FlatButton(
+                                onPressed: () => this.flip(context),
+                                child: Image.asset(
+                                  "assets/images/lotation.png",)
+                            ),
                       ],
                     ),
                   ))
