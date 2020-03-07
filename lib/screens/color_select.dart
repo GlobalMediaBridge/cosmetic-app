@@ -19,6 +19,7 @@ class ColorSelect extends StatefulWidget {
 class _ColorSelectState extends State<ColorSelect> {
   bool showArea = false;
   Color nowColor;
+
   Widget _buildColorList(BuildContext context, Palette palette) {
     List<Widget> list = [];
     for (int i = 0; i < 5; i++) {
@@ -60,10 +61,17 @@ class _ColorSelectState extends State<ColorSelect> {
                       left: 0,
                       top: 0,
                       right: 0,
+                      child: Image.file(widget.preview)),
+                  Positioned(
+                      left: 0,
+                      top: 0,
+                      right: 0,
                       child: GestureDetector(
                           onTapUp: (TapUpDetails details) async {
-                            print('x: ${details.localPosition.dx.toInt()}');
-                            print('y: ${details.localPosition.dy.toInt()}');
+                            setState(() {
+                              showArea = false;
+                              nowColor = null;
+                            });
                             Color color = await Server.extractColor(
                                 Provider.of<Palette>(context, listen: false)
                                     .getId(),
@@ -71,7 +79,6 @@ class _ColorSelectState extends State<ColorSelect> {
                                 details.localPosition.dy.toInt(),
                                 MediaQuery.of(context).size.width.toInt());
 
-                            print('color: $color');
                             setState(() {
                               showArea = true;
                               nowColor = color;
@@ -79,7 +86,7 @@ class _ColorSelectState extends State<ColorSelect> {
                           },
                           child: showArea
                               ? Image.network(
-                                  "${Server.url}/area/${Provider.of<Palette>(context).getId()}")
+                                  "${Server.url}/area/${Provider.of<Palette>(context).getId()}/${nowColor.value}")
                               : Image.file(widget.preview))),
                   Positioned(
                     top: 24,
@@ -112,7 +119,8 @@ class _ColorSelectState extends State<ColorSelect> {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(left: 25, top: 25, right: 25, bottom: 32),
+                padding: const EdgeInsets.only(
+                    left: 25, top: 25, right: 25, bottom: 32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -133,7 +141,8 @@ class _ColorSelectState extends State<ColorSelect> {
                             if (nowColor == null) {
                               showDialog(
                                 context: context,
-                                builder: (BuildContext context) => AlertDialog(content:Text("화장품 발색 영역을 선택해주세요.")),
+                                builder: (BuildContext context) => AlertDialog(
+                                    content: Text("화장품 발색 영역을 선택해주세요.")),
                               );
                               return;
                             }
@@ -143,13 +152,13 @@ class _ColorSelectState extends State<ColorSelect> {
                                 5) {
                               showDialog(
                                 context: context,
-                                builder: (BuildContext context) => AlertDialog(content:Text("최대 5개 까지 선택할 수 있습니다.")),
+                                builder: (BuildContext context) => AlertDialog(
+                                    content: Text("최대 5개 까지 선택할 수 있습니다.")),
                               );
                               return;
                             }
                             Provider.of<Palette>(context, listen: false)
                                 .addColor(nowColor);
-                            imageCache.clear();
                             setState(() {
                               nowColor = null;
                               showArea = false;
