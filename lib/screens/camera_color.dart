@@ -138,8 +138,10 @@ class _CameraViewState extends State<CameraView> {
                   ),
                   Expanded(
                       child: Container(
+                        margin: EdgeInsets.only(bottom: 30),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
                             FlatButton(
                               onPressed: () => this.openGallery(context),

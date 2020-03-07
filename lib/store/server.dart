@@ -39,7 +39,7 @@ class Server {
       ),
     );
     List<dynamic> data = response.data;
-    Color color = Color.fromARGB(data[3].toInt(), data[2].toInt(), data[1].toInt(), data[0].toInt());
+    Color color = Color.fromARGB(255, data[2].toInt(), data[1].toInt(), data[0].toInt());
     return color;
   }
 
