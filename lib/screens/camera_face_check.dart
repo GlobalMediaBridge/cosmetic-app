@@ -21,144 +21,51 @@ class CameraFaceCheck extends StatelessWidget {
   
   }
   
-  void onViewPressed(BuildContext context) {
+  void onButtonPressed(BuildContext context) {
     String id = Provider.of<Palette>(context, listen: false).getId();
     Server.uploadFace(id, preview);
     Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Filter()));
   }
-  
+
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
-      body: Container(
-        constraints: BoxConstraints.expand(),
-        decoration: BoxDecoration(
-          color: Color.fromARGB(255, 255, 255, 255),
-        ),
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            Positioned(
-              left: 0,
-              top: 0,
-              right: 0,
-              bottom: 0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(
-                    child: Image.file(preview),
-                  ),
-                  Spacer(),
-                  Container(
-                    height: 167,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          bottom: 0,
-                          child: Container(
-                            height: 167,
-                            decoration: BoxDecoration(
-                              color: AppColors.secondaryBackground,
-                            ),
-                            child: Container(),
+        body: Container(
+            constraints: BoxConstraints.expand(),
+            child: Column(children: [
+              Image.file(preview,
+                  fit: BoxFit.fitWidth,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.width / 3 * 4),
+              Expanded(
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        FlatButton(
+                          onPressed: () => this.onReturnPressed(context),
+                          child: Image.asset(
+                            "assets/images/back.png",
                           ),
                         ),
-                        Positioned(
-                          left: 30,
-                          bottom: 69,
-                          child: FlatButton(
-                            onPressed: () => this.onReturnPressed(context),
-                            color: Color.fromARGB(0, 0, 0, 0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(0)),
-                            ),
-                            textColor: Color.fromARGB(255, 0, 0, 0),
-                            padding: EdgeInsets.all(0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset("assets/images/back.png",),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 0, 0, 0),
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ],
-                            ),
+                        FlatButton(
+                          onPressed: () => this.onButtonPressed(context),
+                          child: Image.asset(
+                            "assets/images/next.png",
                           ),
                         ),
-                        Positioned(
-                          left: 55,
-                          bottom: 52,
-                          child: Text(
-                            "취소",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: AppColors.primaryText,
-                              fontFamily: "NanumBarunGothic",
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16,
+                        FlatButton(
+                          child: Opacity(
+                            opacity: 0,
+                            child: Image.asset(
+                              "assets/images/next.png",
                             ),
                           ),
-                        ),
+                        )
                       ],
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              bottom: 51,
-              child: Image.asset(
-                "assets/images/next_background.png",
-                fit: BoxFit.none,
-              ),
-            ),
-            Positioned(
-              bottom: 59,
-              child: FlatButton(
-                onPressed: () => this.onViewPressed(context),
-                color: Color.fromARGB(0, 0, 0, 0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(0)),
-                ),
-                textColor: Color.fromARGB(255, 0, 0, 0),
-                padding: EdgeInsets.all(0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset("assets/images/next.png",),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      "",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+                  ))
+            ])));
   }
 }

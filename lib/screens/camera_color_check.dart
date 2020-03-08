@@ -31,15 +31,10 @@ class CameraColorCheck extends StatelessWidget {
         body: Container(
             constraints: BoxConstraints.expand(),
             child: Column(children: [
-              Image.file(preview, fit: BoxFit.fitWidth,
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .width / 3 * 4),
+              Image.file(preview,
+                  fit: BoxFit.fitWidth,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.width / 3 * 4),
               Expanded(
                   child: Container(
                 child: Row(
@@ -70,102 +65,5 @@ class CameraColorCheck extends StatelessWidget {
                 ),
               ))
             ])));
-
-    return Scaffold(
-      body: Container(
-        constraints: BoxConstraints.expand(),
-        decoration: BoxDecoration(
-          color: Color.fromARGB(255, 255, 255, 255),
-        ),
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            Positioned(
-              left: 0,
-              top: 0,
-              right: 0,
-              bottom: 0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(
-                    child: Image.file(preview),
-                  ),
-                  Spacer(),
-                  Container(
-                    height: 167,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          bottom: 0,
-                          child: Container(
-                            height: 167,
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                            ),
-                            child: Container(),
-                          ),
-                        ),
-                        Positioned(
-                          left: 30,
-                          bottom: 67,
-                          child: FlatButton(
-                            onPressed: () => this.onReturnPressed(context),
-                            color: Color.fromARGB(0, 0, 0, 0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(0)),
-                            ),
-                            textColor: Color.fromARGB(255, 0, 0, 0),
-                            padding: EdgeInsets.all(0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  "assets/images/back.png",
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              bottom: 59,
-              child: FlatButton(
-                onPressed: () => this.onButtonPressed(context),
-                color: Color.fromARGB(0, 0, 0, 0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(0)),
-                ),
-                textColor: Color.fromARGB(255, 255, 255, 255),
-                padding: EdgeInsets.all(0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/next.png",
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }
