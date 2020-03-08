@@ -1,8 +1,10 @@
 import 'dart:io';
 
 import 'package:cosmetic_app/screens/start/start.dart';
+import 'package:cosmetic_app/store/palette.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Filter extends StatefulWidget {
   File preview;
@@ -23,6 +25,27 @@ class _FilterState extends State<Filter> {
   void onButtonTwoPressed(BuildContext context) {}
 
   void onButtonPressed(BuildContext context) {}
+
+  Widget _buildColorList(BuildContext context, Palette palette) {
+    List<Widget> list = [];
+    for (int i = 0; i < 5; i++) {
+      Color color = palette.getColor(i);
+      list.add(Container(
+        height: MediaQuery.of(context).size.width / 5.toInt(),
+        width: MediaQuery.of(context).size.width / 6.toInt(),
+        decoration: BoxDecoration(
+          color: color == null ? Color.fromARGB(255, 174, 174, 174) : color,
+          borderRadius: Radii.k5pxRadius,
+        ),
+        child: Container(),
+      ));
+    }
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: list,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +76,13 @@ class _FilterState extends State<Filter> {
                     },
                     child: showOrigin
                         ? Image.file(widget.preview,
-                        fit: BoxFit.fitWidth,
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.width / 3 * 4)
+                            fit: BoxFit.fitWidth,
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.width / 3 * 4)
                         : Image.file(widget.preview,
-                        fit: BoxFit.fitWidth,
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.width / 3 * 4)),
+                            fit: BoxFit.fitWidth,
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.width / 3 * 4)),
                 Positioned(
                   top: 24,
                   right: 19,
@@ -85,173 +108,68 @@ class _FilterState extends State<Filter> {
               ],
             ),
             Expanded(
-              flex: 1,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Positioned(
-                    left: 0,
-                    top: 0,
-                    child: Container(
-                      width: 375,
-                      height: 167,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                      ),
-                      child: Container(),
-                    ),
-                  ),
-                  Positioned(
-                    left: 25,
-                    top: 22,
-                    right: 25,
-                    bottom: 32,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Container(
-                          height: 30,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Align(
-                                alignment: Alignment.bottomLeft,
-                                child: Container(
-                                  width: 188,
-                                  height: 55,
-                                  child: FlatButton(
-                                    onPressed: () =>
-                                        this.onButtonPressed(context),
-                                    color: AppColors.secondaryBackground,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(0)),
-                                    ),
-                                    textColor:
-                                        Color.fromARGB(255, 154, 154, 155),
-                                    padding: EdgeInsets.all(0),
-                                    child: Text(
-                                      "컬러",
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 154, 154, 155),
-                                        fontFamily: "NanumBarunGothic",
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                  ),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    left: 25, top: 25, right: 25, bottom: 32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      height: 30,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: FlatButton(
+                              onPressed: () => this.onButtonPressed(context),
+                              color: AppColors.secondaryBackground,
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(0)),
+                              ),
+                              padding: EdgeInsets.all(0),
+                              child: Text(
+                                "컬러",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 154, 154, 155),
+                                  fontFamily: "NanumBarunGothic",
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 18,
                                 ),
                               ),
-                              Spacer(),
-                              Align(
-                                alignment: Alignment.bottomLeft,
-                                child: Container(
-                                  width: 188,
-                                  height: 55,
-                                  child: FlatButton(
-                                    onPressed: () =>
-                                        this.onButtonTwoPressed(context),
-                                    color: AppColors.secondaryBackground,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(0)),
-                                    ),
-                                    textColor:
-                                        Color.fromARGB(255, 154, 154, 155),
-                                    padding: EdgeInsets.all(0),
-                                    child: Text(
-                                      "필터",
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 154, 154, 155),
-                                        fontFamily: "NanumBarunGothic",
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Spacer(),
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: 81,
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 174, 174, 174),
-                                      borderRadius: Radii.k5pxRadius,
-                                    ),
-                                    child: Container(),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: 81,
-                                    margin: EdgeInsets.only(left: 10),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 174, 174, 174),
-                                      borderRadius: Radii.k5pxRadius,
-                                    ),
-                                    child: Container(),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: 81,
-                                    margin: EdgeInsets.only(left: 10),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 174, 174, 174),
-                                      borderRadius: Radii.k5pxRadius,
-                                    ),
-                                    child: Container(),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: 81,
-                                    margin: EdgeInsets.only(left: 10),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 174, 174, 174),
-                                      borderRadius: Radii.k5pxRadius,
-                                    ),
-                                    child: Container(),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: 81,
-                                    margin: EdgeInsets.only(left: 10),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 174, 174, 174),
-                                      borderRadius: Radii.k5pxRadius,
-                                    ),
-                                    child: Container(),
-                                  ),
-                                ),
-                              ],
                             ),
                           ),
-                        ),
-                      ],
+                          Expanded(
+                              child: FlatButton(
+                            onPressed: () => this.onButtonTwoPressed(context),
+                            color: AppColors.secondaryBackground,
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(0)),
+                            ),
+                            padding: EdgeInsets.all(0),
+                            child: Text(
+                              "필터",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 154, 154, 155),
+                                fontFamily: "NanumBarunGothic",
+                                fontWeight: FontWeight.w700,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ))
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                    Spacer(),
+                    Container(
+                        child: Consumer<Palette>(
+                            builder: (context, value, child) =>
+                                _buildColorList(context, value))),
+                  ],
+                ),
               ),
             ),
           ],
