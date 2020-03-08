@@ -24,7 +24,7 @@ class CameraFaceCheck extends StatelessWidget {
   void onButtonPressed(BuildContext context) {
     String id = Provider.of<Palette>(context, listen: false).getId();
     Server.uploadFace(id, preview);
-    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Filter()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Filter(preview: preview)));
   }
 
   @override
