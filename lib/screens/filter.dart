@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:cosmetic_app/screens/start/start.dart';
 import 'package:cosmetic_app/store/palette.dart';
+import 'package:cosmetic_app/store/server.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,27 +18,34 @@ class Filter extends StatefulWidget {
 class _FilterState extends State<Filter> {
   bool showOrigin = false;
   bool colorFilter = false;
+  String url;
 
   void onButtonThreePressed(BuildContext context) {
     Navigator.of(context).popUntil((route) => route.isFirst);
   }
 
-  void onButtonTwoPressed(BuildContext context) {}
-
-  void onButtonPressed(BuildContext context) {}
-
   Widget _buildColorList(BuildContext context, Palette palette) {
     List<Widget> list = [];
     for (int i = 0; i < 5; i++) {
       Color color = palette.getColor(i);
-      list.add(Container(
-        height: MediaQuery.of(context).size.width / 5.toInt(),
-        width: MediaQuery.of(context).size.width / 6.toInt(),
-        decoration: BoxDecoration(
-          color: color == null ? Color.fromARGB(255, 174, 174, 174) : color,
-          borderRadius: Radii.k5pxRadius,
+      list.add(GestureDetector(
+        onTap: () {
+          String id = Provider.of<Palette>(context, listen: false).getId();
+          Server.makeup(id, color).then((value) {
+            setState(() {
+              url = "${Server.url}/image/${Provider.of<Palette>(context).getId()}/${color.value}";
+            });
+          });
+        },
+        child: Container(
+          height: MediaQuery.of(context).size.width / 5.toInt(),
+          width: MediaQuery.of(context).size.width / 6.toInt(),
+          decoration: BoxDecoration(
+            color: color == null ? Color.fromARGB(255, 174, 174, 174) : color,
+            borderRadius: Radii.k5pxRadius,
+          ),
+          child: Container(),
         ),
-        child: Container(),
       ));
     }
 
@@ -81,7 +88,7 @@ class _FilterState extends State<Filter> {
                             fit: BoxFit.fitWidth,
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.width / 3 * 4)
-                        : Image.file(widget.preview,
+                        : url == null ? Container() : Image.network(url,
                             fit: BoxFit.fitWidth,
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.width / 3 * 4)),
