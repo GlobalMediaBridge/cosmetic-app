@@ -52,6 +52,7 @@ class _ColorSelectState extends State<ColorSelect> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [

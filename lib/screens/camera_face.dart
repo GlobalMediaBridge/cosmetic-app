@@ -139,6 +139,7 @@ class _CameraViewState extends State<CameraView> {
                   ),
                   Expanded(
                       child: Container(
+                        color: Colors.white,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[

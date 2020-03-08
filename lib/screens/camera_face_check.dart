@@ -31,6 +31,7 @@ class CameraFaceCheck extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+            color: Colors.white,
             constraints: BoxConstraints.expand(),
             child: Column(children: [
               Image.file(preview,
