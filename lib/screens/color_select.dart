@@ -58,7 +58,10 @@ class _ColorSelectState extends State<ColorSelect> {
             Stack(
               alignment: Alignment.center,
               children: [
-                Image.file(widget.preview),
+                Image.file(widget.preview,
+                    fit: BoxFit.fitWidth,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.width / 3 * 4),
                 GestureDetector(
                     onTapUp: (TapUpDetails details) async {
                       Color color = await Server.extractColor(
@@ -74,8 +77,14 @@ class _ColorSelectState extends State<ColorSelect> {
                     },
                     child: showArea
                         ? Image.network(
-                            "${Server.url}/area/${Provider.of<Palette>(context).getId()}/${nowColor.value}")
-                        : Image.file(widget.preview)),
+                            "${Server.url}/area/${Provider.of<Palette>(context).getId()}/${nowColor.value}",
+                            fit: BoxFit.fitWidth,
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.width / 3 * 4)
+                        : Image.file(widget.preview,
+                            fit: BoxFit.fitWidth,
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.width / 3 * 4)),
                 Positioned(
                   top: 24,
                   right: 19,
