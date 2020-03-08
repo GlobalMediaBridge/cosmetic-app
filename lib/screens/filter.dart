@@ -17,6 +17,7 @@ class Filter extends StatefulWidget {
 
 class _FilterState extends State<Filter> {
   bool showOrigin = false;
+  bool colorFilter = false;
 
   void onButtonThreePressed(BuildContext context) {
     Navigator.of(context).popUntil((route) => route.isFirst);
@@ -51,6 +52,7 @@ class _FilterState extends State<Filter> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -121,7 +123,9 @@ class _FilterState extends State<Filter> {
                         children: [
                           Expanded(
                             child: FlatButton(
-                              onPressed: () => this.onButtonPressed(context),
+                              onPressed: () {setState(() {
+                                colorFilter = false;
+                              });},
                               color: AppColors.secondaryBackground,
                               shape: RoundedRectangleBorder(
                                 borderRadius:
@@ -132,7 +136,7 @@ class _FilterState extends State<Filter> {
                                 "컬러",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                  color: Color.fromARGB(255, 154, 154, 155),
+                                  color: colorFilter ? Color.fromARGB(255, 154, 154, 155) : AppColors.primaryText,
                                   fontFamily: "NanumBarunGothic",
                                   fontWeight: FontWeight.w700,
                                   fontSize: 18,
@@ -142,7 +146,9 @@ class _FilterState extends State<Filter> {
                           ),
                           Expanded(
                               child: FlatButton(
-                            onPressed: () => this.onButtonTwoPressed(context),
+                            onPressed: () {setState(() {
+                              colorFilter = true;
+                            });},
                             color: AppColors.secondaryBackground,
                             shape: RoundedRectangleBorder(
                               borderRadius:
@@ -153,7 +159,7 @@ class _FilterState extends State<Filter> {
                               "필터",
                               textAlign: TextAlign.left,
                               style: TextStyle(
-                                color: Color.fromARGB(255, 154, 154, 155),
+                                color: colorFilter ? AppColors.primaryText : Color.fromARGB(255, 154, 154, 155),
                                 fontFamily: "NanumBarunGothic",
                                 fontWeight: FontWeight.w700,
                                 fontSize: 18,
