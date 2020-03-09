@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:cosmetic_app/screens/preview.dart';
-import 'package:cosmetic_app/screens/camera_face_check.dart';
 import 'package:cosmetic_app/utils/values/camera.dart';
 import 'package:cosmetic_app/widgets/camera_action.dart';
 import 'package:cosmetic_app/widgets/help_box.dart';

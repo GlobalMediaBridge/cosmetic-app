@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class SaveButton extends StatelessWidget {
   Function buttonPressed;
-  SaveButton({@required buttonPressed});
+  SaveButton({@required this.buttonPressed});
   @override
   Widget build(BuildContext context) {
     return FlatButton(
