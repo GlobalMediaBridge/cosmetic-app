@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:cosmetic_app/screens/camera_color_check.dart';
 import 'package:cosmetic_app/utils/values/camera.dart';
+import 'package:cosmetic_app/widgets/camera_action.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
@@ -53,6 +54,8 @@ class _CameraViewState extends State<CameraView> {
     try{
       File image = await ImagePicker.pickImage(
           source: ImageSource.gallery);
+
+      if (image == null) return;
 
       Navigator.push(
         context,
@@ -137,32 +140,7 @@ class _CameraViewState extends State<CameraView> {
                     ],
                   ),
                   Expanded(
-                      child: Container(
-                        color: Colors.white,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            FlatButton(
-                              onPressed: () => this.openGallery(context),
-                              child: Image.asset(
-                                "assets/images/album.png",
-                              ),
-                            ),
-                            FlatButton(
-                              onPressed: () => this.snapshot(context),
-                              child: Image.asset(
-                                "assets/images/camera_main.png",
-                              ),
-                            ),
-                            FlatButton(
-                                onPressed: () => this.flip(context),
-                                child: Image.asset(
-                                  "assets/images/lotation.png",)
-                            ),
-                      ],
-                    ),
-                  ))
+                      child: CameraAction(openGallery: openGallery, snapshot: this.snapshot, flip: flip))
                 ],
               );
             } else {
