@@ -4,6 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:cosmetic_app/screens/camera_color_check.dart';
 import 'package:cosmetic_app/utils/values/camera.dart';
 import 'package:cosmetic_app/widgets/camera_action.dart';
+import 'package:cosmetic_app/widgets/help_box.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
@@ -117,25 +118,7 @@ class _CameraViewState extends State<CameraView> {
                           child: CameraPreview(_controller)),
                       Positioned(
                         top: 24,
-                        child: Container(
-                          alignment: Alignment.center,
-                          width: 330,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(128, 255, 255, 255),
-                            borderRadius: BorderRadius.all(Radius.circular(14)),
-                          ),
-                          child: Text(
-                            "손목 발색 사진을 촬영해주세요.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 247, 7, 70),
-                              fontFamily: "NanumBarunGothic",
-                              fontWeight: FontWeight.w700,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
+                        child: HelpBox(message:"손목 발색 사진을 촬영해주세요.")
                       ),
                     ],
                   ),
