@@ -84,6 +84,16 @@ class _ColorSelectState extends State<ColorSelect> {
     return length >= expect;
   }
 
+  void selectColor(BuildContext context, int x, int y, int width) async {
+    Color color = await Server.extractColor(
+        Provider.of<Palette>(context, listen: false).getId(), x, y, width);
+
+    setState(() {
+      showArea = true;
+      nowColor = color;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,17 +110,12 @@ class _ColorSelectState extends State<ColorSelect> {
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.width / 3 * 4),
                 GestureDetector(
-                    onTapUp: (TapUpDetails details) async {
-                      Color color = await Server.extractColor(
-                          Provider.of<Palette>(context, listen: false).getId(),
+                    onTapUp: (TapUpDetails details) {
+                      selectColor(
+                          context,
                           details.localPosition.dx.toInt(),
                           details.localPosition.dy.toInt(),
                           MediaQuery.of(context).size.width.toInt());
-
-                      setState(() {
-                        showArea = true;
-                        nowColor = color;
-                      });
                     },
                     child: showArea
                         ? Image.network(
