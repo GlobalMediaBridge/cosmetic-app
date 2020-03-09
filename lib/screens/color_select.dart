@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cosmetic_app/store/palette.dart';
 import 'package:cosmetic_app/store/server.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
+import 'package:cosmetic_app/widgets/next_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cosmetic_app/screens/camera_view.dart';
@@ -22,8 +23,7 @@ class _ColorSelectState extends State<ColorSelect> {
   bool next = false;
   Color nowColor;
 
-  void onNextPressed(BuildContext context) {
-    print("다음");
+  void nextPressed(BuildContext context) {
     Navigator.of(context).push(
         MaterialPageRoute(builder: (BuildContext context) => CameraView(purpose:"face")));
   }
@@ -91,25 +91,7 @@ class _ColorSelectState extends State<ColorSelect> {
                   top: 24,
                   right: 19,
                   child: next
-                      ? FlatButton(
-                          onPressed: () => this.onNextPressed(context),
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          textColor: Color.fromARGB(255, 247, 7, 70),
-                          padding: EdgeInsets.all(0),
-                          child: Text(
-                            "다음",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: AppColors.primaryText,
-                              fontFamily: "NanumBarunGothic",
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16,
-                            ),
-                          ),
-                        )
+                      ? NextButton(buttonPressed:nextPressed)
                       : Container(
                           width: 330,
                           height: 28,
