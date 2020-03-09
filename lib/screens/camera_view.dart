@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:camera/camera.dart';
-import 'package:cosmetic_app/screens/camera_color_check.dart';
+import 'package:cosmetic_app/screens/preview.dart';
 import 'package:cosmetic_app/screens/camera_face_check.dart';
 import 'package:cosmetic_app/utils/values/camera.dart';
 import 'package:cosmetic_app/widgets/camera_action.dart';
@@ -56,13 +56,10 @@ class _CameraViewState extends State<CameraView> {
   }
 
   void showPreview(BuildContext context, File image) {
-    print(widget.purpose);
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => widget.purpose == "color"
-            ? CameraColorCheck(preview: image)
-            : CameraFaceCheck(preview: image),
+        builder: (context) => Preview(preview: image, purpose:widget.purpose)
       ),
     );
   }
@@ -74,12 +71,6 @@ class _CameraViewState extends State<CameraView> {
       if (image == null) return;
 
       showPreview(context, image);
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => CameraColorCheck(preview: image),
-        ),
-      );
     } catch (e) {
       // If an error occurs, log the error to the console.
       print(e);

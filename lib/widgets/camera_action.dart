@@ -12,19 +12,19 @@ class CameraAction extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           FlatButton(
-            onPressed: () => this.openGallery(context),
+            onPressed: () => openGallery(context),
             child: Image.asset(
               "assets/images/album.png",
             ),
           ),
           FlatButton(
-            onPressed: () => this.snapshot(context),
+            onPressed: () => snapshot(context),
             child: Image.asset(
               "assets/images/camera_main.png",
             ),
           ),
           FlatButton(
-              onPressed: () => this.flip(context),
+              onPressed: () => flip(context),
               child: Image.asset(
                 "assets/images/lotation.png",)
           ),
