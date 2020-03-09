@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cosmetic_app/store/palette.dart';
 import 'package:cosmetic_app/store/server.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
+import 'package:cosmetic_app/widgets/save_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,9 @@ class _FilterState extends State<Filter> {
   bool colorFilter = false;
   String url;
 
-  void onButtonThreePressed(BuildContext context) {
+  void savePressed(BuildContext context) {
+    // 앱 내부에 이미지 저장
+
     Navigator.of(context).popUntil((route) => route.isFirst);
   }
 
@@ -95,24 +98,7 @@ class _FilterState extends State<Filter> {
                 Positioned(
                   top: 24,
                   right: 19,
-                  child: FlatButton(
-                    onPressed: () => this.onButtonThreePressed(context),
-                    color: AppColors.primaryText,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    padding: EdgeInsets.all(0),
-                    child: Text(
-                      "저장",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: "NanumBarunGothic",
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
+                  child: SaveButton(buttonPressed:savePressed)
                 ),
               ],
             ),
