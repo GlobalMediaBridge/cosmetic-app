@@ -12,7 +12,6 @@ class SaveButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
-      padding: EdgeInsets.all(0),
       child: Text(
         "저장",
         textAlign: TextAlign.center,

@@ -4,6 +4,7 @@ import 'package:cosmetic_app/store/palette.dart';
 import 'package:cosmetic_app/store/server.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:cosmetic_app/widgets/save_button.dart';
+import 'package:cosmetic_app/widgets/tab_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,7 +37,8 @@ class _FilterState extends State<Filter> {
           String id = Provider.of<Palette>(context, listen: false).getId();
           Server.makeup(id, color).then((value) {
             setState(() {
-              url = "${Server.url}/image/${Provider.of<Palette>(context).getId()}/${color.value}";
+              url =
+                  "${Server.url}/image/${Provider.of<Palette>(context).getId()}/${color.value}";
             });
           });
         },
@@ -91,15 +93,17 @@ class _FilterState extends State<Filter> {
                             fit: BoxFit.fitWidth,
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.width / 3 * 4)
-                        : url == null ? Container() : Image.network(url,
-                            fit: BoxFit.fitWidth,
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.width / 3 * 4)),
+                        : url == null
+                            ? Container()
+                            : Image.network(url,
+                                fit: BoxFit.fitWidth,
+                                width: MediaQuery.of(context).size.width,
+                                height:
+                                    MediaQuery.of(context).size.width / 3 * 4)),
                 Positioned(
-                  top: 24,
-                  right: 19,
-                  child: SaveButton(buttonPressed:savePressed)
-                ),
+                    top: 24,
+                    right: 19,
+                    child: SaveButton(buttonPressed: savePressed)),
               ],
             ),
             Expanded(
@@ -115,50 +119,23 @@ class _FilterState extends State<Filter> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Expanded(
-                            child: FlatButton(
-                              onPressed: () {setState(() {
-                                colorFilter = false;
-                              });},
-                              color: AppColors.secondaryBackground,
-                              shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(0)),
-                              ),
-                              padding: EdgeInsets.all(0),
-                              child: Text(
-                                "컬러",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  color: colorFilter ? Color.fromARGB(255, 154, 154, 155) : AppColors.primaryText,
-                                  fontFamily: "NanumBarunGothic",
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ),
-                          ),
+                              child: TabMenu(
+                                  text: '컬러',
+                                  isActive: !colorFilter,
+                                  tabToggle: () {
+                                    setState(() {
+                                      colorFilter = false;
+                                    });
+                                  })),
                           Expanded(
-                              child: FlatButton(
-                            onPressed: () {setState(() {
-                              colorFilter = true;
-                            });},
-                            color: AppColors.secondaryBackground,
-                            shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(0)),
-                            ),
-                            padding: EdgeInsets.all(0),
-                            child: Text(
-                              "필터",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                color: colorFilter ? AppColors.primaryText : Color.fromARGB(255, 154, 154, 155),
-                                fontFamily: "NanumBarunGothic",
-                                fontWeight: FontWeight.w700,
-                                fontSize: 18,
-                              ),
-                            ),
-                          ))
+                              child: TabMenu(
+                                  text: '필터',
+                                  isActive: colorFilter,
+                                  tabToggle: () {
+                                    setState(() {
+                                      colorFilter = true;
+                                    });
+                                  }))
                         ],
                       ),
                     ),
