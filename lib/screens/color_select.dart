@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:cosmetic_app/store/palette.dart';
 import 'package:cosmetic_app/store/server.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
+import 'package:cosmetic_app/widgets/help_box.dart';
 import 'package:cosmetic_app/widgets/next_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cosmetic_app/screens/camera_view.dart';
@@ -24,8 +26,8 @@ class _ColorSelectState extends State<ColorSelect> {
   Color nowColor;
 
   void nextPressed(BuildContext context) {
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (BuildContext context) => CameraView(purpose:"face")));
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) => CameraView(purpose: "face")));
   }
 
   Widget _buildColorList(BuildContext context, Palette palette) {
@@ -88,32 +90,13 @@ class _ColorSelectState extends State<ColorSelect> {
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.width / 3 * 4)),
                 Positioned(
-                  top: 24,
-                  right: 19,
+                  top:24,
+                  right: next ? 19 : null,
                   child: next
-                      ? NextButton(buttonPressed:nextPressed)
-                      : Container(
-                          width: 330,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(128, 255, 255, 255),
-                            borderRadius: BorderRadius.all(Radius.circular(14)),
-                          ),
-                          child: Center(
-                            child: Text(
-                              showArea
-                                  ? "+ 버튼을 눌러 색상을 추가해주세요"
-                                  : "화장품 발색 영역을 선택해주세요.",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: AppColors.primaryText,
-                                fontFamily: "NanumBarunGothic",
-                                fontWeight: FontWeight.w700,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
-                        ),
+                      ? NextButton(buttonPressed: nextPressed)
+                      : showArea
+                          ? HelpBox(message: "+ 버튼을 눌러 색상을 추가해주세요")
+                          : HelpBox(message: "화장품 발색 영역을 선택해주세요."),
                 )
               ],
             ),
