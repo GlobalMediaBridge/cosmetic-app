@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cosmetic_app/store/palette.dart';
 import 'package:cosmetic_app/store/server.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
+import 'package:cosmetic_app/widgets/color_add_button.dart';
 import 'package:cosmetic_app/widgets/help_box.dart';
 import 'package:cosmetic_app/widgets/next_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -51,6 +52,38 @@ class _ColorSelectState extends State<ColorSelect> {
     );
   }
 
+  void showAlert(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(content: Text(message)),
+    );
+  }
+
+  int getColorLength(BuildContext context) {
+    return Provider.of<Palette>(context, listen: false).colors.length;
+  }
+
+  void addColor(BuildContext context) {
+    if (nowColor == null) {
+      showAlert("화장품 발색 영역을 선택해주세요.");
+      return;
+    }
+    if (isExceed(getColorLength(context), 5)) {
+      showAlert("최대 5개 까지 선택할 수 있습니다.");
+      return;
+    }
+    Provider.of<Palette>(context, listen: false).addColor(nowColor);
+    setState(() {
+      nowColor = null;
+      showArea = false;
+      next = true;
+    });
+  }
+
+  bool isExceed(int length, int expect) {
+    return length >= expect;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +123,7 @@ class _ColorSelectState extends State<ColorSelect> {
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.width / 3 * 4)),
                 Positioned(
-                  top:24,
+                  top: 24,
                   right: next ? 19 : null,
                   child: next
                       ? NextButton(buttonPressed: nextPressed)
@@ -119,46 +152,7 @@ class _ColorSelectState extends State<ColorSelect> {
                             fontSize: 14,
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            if (nowColor == null) {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) => AlertDialog(
-                                    content: Text("화장품 발색 영역을 선택해주세요.")),
-                              );
-                              return;
-                            }
-                            if (Provider.of<Palette>(context, listen: false)
-                                    .colors
-                                    .length ==
-                                5) {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) => AlertDialog(
-                                    content: Text("최대 5개 까지 선택할 수 있습니다.")),
-                              );
-                              return;
-                            }
-                            Provider.of<Palette>(context, listen: false)
-                                .addColor(nowColor);
-                            setState(() {
-                              nowColor = null;
-                              showArea = false;
-                              next = true;
-                            });
-                          },
-                          child: Text(
-                            "+",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: AppColors.primaryText,
-                              fontFamily: "NanumBarunGothic",
-                              fontWeight: FontWeight.w700,
-                              fontSize: 24,
-                            ),
-                          ),
-                        )
+                        ColorAddButton(addColor: addColor)
                       ],
                     ),
                     Spacer(),
