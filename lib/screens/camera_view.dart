@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:cosmetic_app/screens/camera_color_check.dart';
+import 'package:cosmetic_app/screens/camera_face_check.dart';
 import 'package:cosmetic_app/utils/values/camera.dart';
 import 'package:cosmetic_app/widgets/camera_action.dart';
 import 'package:cosmetic_app/widgets/help_box.dart';
@@ -10,20 +11,23 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
-
-class CameraColor extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return CameraView();
-  }
-}
-
-
 class CameraView extends StatefulWidget {
   CameraDescription camera;
+  String purpose;
+  String message;
 
-  CameraView() {
-    camera = Camera().getBackCamera();
+  CameraView({@required this.purpose}) {
+    switch (purpose) {
+      case 'face':
+        message = "민낯 사진을 촬영해 주세요.";
+        camera = Camera().getFrontCamera();
+        break;
+      case 'color':
+      default:
+        message = "손목 발색 사진을 촬영해주세요.";
+        camera = Camera().getBackCamera();
+        break;
+    }
   }
 
   @override
@@ -51,13 +55,25 @@ class _CameraViewState extends State<CameraView> {
     super.dispose();
   }
 
+  void showPreview(BuildContext context, File image) {
+    print(widget.purpose);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => widget.purpose == "color"
+            ? CameraColorCheck(preview: image)
+            : CameraFaceCheck(preview: image),
+      ),
+    );
+  }
+
   void openGallery(BuildContext context) async {
-    try{
-      File image = await ImagePicker.pickImage(
-          source: ImageSource.gallery);
+    try {
+      File image = await ImagePicker.pickImage(source: ImageSource.gallery);
 
       if (image == null) return;
 
+      showPreview(context, image);
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -89,12 +105,7 @@ class _CameraViewState extends State<CameraView> {
 
       await _controller.takePicture(path);
 
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => CameraColorCheck(preview: File(path)),
-        ),
-      );
+      showPreview(context, File(path));
     } catch (e) {
       // If an error occurs, log the error to the console.
       print(e);
@@ -117,13 +128,14 @@ class _CameraViewState extends State<CameraView> {
                           aspectRatio: 3.0 / 4.0,
                           child: CameraPreview(_controller)),
                       Positioned(
-                        top: 24,
-                        child: HelpBox(message:"손목 발색 사진을 촬영해주세요.")
-                      ),
+                          top: 24, child: HelpBox(message: widget.message)),
                     ],
                   ),
                   Expanded(
-                      child: CameraAction(openGallery: openGallery, snapshot: this.snapshot, flip: flip))
+                      child: CameraAction(
+                          openGallery: openGallery,
+                          snapshot: this.snapshot,
+                          flip: flip))
                 ],
               );
             } else {

@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:cosmetic_app/screens/camera_face.dart';
 import 'package:cosmetic_app/store/palette.dart';
 import 'package:cosmetic_app/store/server.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:cosmetic_app/screens/camera_view.dart';
 import 'package:flutter/services.dart';
 
 class ColorSelect extends StatefulWidget {
@@ -23,8 +23,9 @@ class _ColorSelectState extends State<ColorSelect> {
   Color nowColor;
 
   void onNextPressed(BuildContext context) {
+    print("다음");
     Navigator.of(context).push(
-        MaterialPageRoute(builder: (BuildContext context) => CameraFace()));
+        MaterialPageRoute(builder: (BuildContext context) => CameraView(purpose:"face")));
   }
 
   Widget _buildColorList(BuildContext context, Palette palette) {

@@ -1,5 +1,5 @@
 
-import 'package:cosmetic_app/screens/camera_color.dart';
+import 'package:cosmetic_app/screens/camera_view.dart';
 import 'package:cosmetic_app/screens/start/start_animation1_element1.dart';
 import 'package:cosmetic_app/screens/start/start_animation1_element2.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
@@ -41,7 +41,7 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
   }
   
   void onButtonTwoPressed(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => CameraColor()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => CameraView(purpose: "color")));
   }
   
   void onButtonThreePressed(BuildContext context) {

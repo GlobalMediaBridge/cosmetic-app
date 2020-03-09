@@ -34,10 +34,12 @@ class Camera {
   }
 
   CameraDescription getBackCamera(){
+    this.selectedCamera = "back";
     return _backCamera;
   }
 
   CameraDescription getFrontCamera(){
+    this.selectedCamera = "front";
     return _frontCamera;
   }
 

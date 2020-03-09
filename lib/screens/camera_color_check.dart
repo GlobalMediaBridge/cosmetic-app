@@ -1,7 +1,6 @@
 import 'dart:io';
 
-import 'package:cosmetic_app/screens/camera_face.dart';
-import 'package:cosmetic_app/screens/camera_color.dart';
+import 'package:cosmetic_app/screens/camera_view.dart';
 import 'package:cosmetic_app/screens/color_select.dart';
 import 'package:cosmetic_app/store/palette.dart';
 import 'package:cosmetic_app/store/server.dart';
