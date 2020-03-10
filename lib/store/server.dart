@@ -44,10 +44,9 @@ class Server {
   }
 
   static Future<String> makeup(String id, Color color) async {
-    List<int> c = [color.blue, color.green, color.red, color.alpha];
     Response response = await dio.post(
-      "$url/extract",
-      data: {"color": c},
+      "$url/makeup",
+      data: {"color": color.value},
       options: Options(
         headers: {"id": id},
       ),
