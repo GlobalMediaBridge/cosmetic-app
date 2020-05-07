@@ -72,18 +72,10 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
           children: [
             Container(
               margin: EdgeInsets.only(top: 230),
-              child: StartWidgetAnimation1Element1(
-                animationController: this.logoTextAnimationController,
-                child: Text(
-                    "logo",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 254, 215, 2),
-                      fontFamily: "Lobster 1.4",
-                      fontWeight: FontWeight.w400,
-                      fontSize: 40,
-                  )
-                ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 28,horizontal: 100),
+                child: Image.asset("assets/images/logo2.png"),
+
               ),
             ),
             Container(
