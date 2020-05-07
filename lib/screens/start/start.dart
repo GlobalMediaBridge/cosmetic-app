@@ -71,9 +71,9 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 230),
+              margin: EdgeInsets.only(top: 300),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 28,horizontal: 100),
+                padding: const EdgeInsets.symmetric(horizontal: 100),
                 child: Image.asset("assets/images/logo2.png"),
 
               ),
@@ -99,30 +99,6 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
                         padding: EdgeInsets.all(0),
                         child: Text(
                           "시작하기",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: AppColors.primaryText,
-                            fontFamily: "NanumBarunGothic",
-                            fontWeight: FontWeight.w400,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 310,
-                      height: 46,
-                      margin: EdgeInsets.only(top: 14),
-                      child: FlatButton(
-                        onPressed: () => this.onButtonThreePressed(context),
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(23)),
-                        ),
-                        textColor: Color.fromARGB(255, 247, 7, 70),
-                        padding: EdgeInsets.all(0),
-                        child: Text(
-                          "사진앨범",
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             color: AppColors.primaryText,
@@ -170,7 +146,7 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
             Container(
               margin: EdgeInsets.only(bottom: 20),
               child: Text(
-                "© 2020 app name",
+                "© 2020 Lipsynk",
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   color: Color.fromARGB(255, 0, 0, 0),
