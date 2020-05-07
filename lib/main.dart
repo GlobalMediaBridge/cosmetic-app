@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:cosmetic_app/screens/filter.dart';
 import 'package:cosmetic_app/screens/splash/splash.dart';
 import 'package:cosmetic_app/utils/values/camera.dart';
 import 'package:cosmetic_app/store/palette.dart';

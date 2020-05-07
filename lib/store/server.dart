@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class Server {
-  static final String url = "http://1.224.214.89:5000";
+  static final String url = "http://10.21.20.27:5000";
 
   static final Dio dio = Dio();
 
