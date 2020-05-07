@@ -24,7 +24,7 @@ class _ColorFilterTabState extends State<ColorFilterTab> {
         onTap: () {
           String id = Provider.of<Palette>(context, listen: false).getId();
           Server.makeup(id, color).then((value) {
-            widget.setUrl("${Server.url}/image/${Provider.of<Palette>(context).getId()}/${color.value}");
+            widget.setUrl("${Server.url}/image/$id/${color.value}");
           });
         },
         child: Container(
