@@ -1,26 +1,24 @@
 
-import 'package:cosmetic_app/screens/tutorial1/tutorial1_animation1_element1.dart';
-import 'package:cosmetic_app/screens/tutorial1/tutorial1_animation1_element2.dart';
-import 'package:cosmetic_app/screens/tutorial1/tutorial1_animation1_element3.dart';
-import 'package:cosmetic_app/screens/tutorial1/tutorial1_animation1_element4.dart';
-import 'package:cosmetic_app/screens/tutorial2/tutorial2.dart';
+import 'package:cosmetic_app/screens/start/start.dart';
+import 'package:cosmetic_app/screens/tutorial4/tutorial4_animation1_element1.dart';
+import 'package:cosmetic_app/screens/tutorial4/tutorial4_animation1_element2.dart';
+import 'package:cosmetic_app/screens/tutorial4/tutorial4_animation1_element3.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 
 
-class Tutorial1 extends StatefulWidget {
+class Tutorial4 extends StatefulWidget {
   
   @override
-  State<StatefulWidget> createState() => _Tutorial1State();
+  State<StatefulWidget> createState() => _Tutorial4State();
 }
 
 
-class _Tutorial1State extends State<Tutorial1> with TickerProviderStateMixin {
+class _Tutorial4State extends State<Tutorial4> with TickerProviderStateMixin {
   AnimationController titleTwoAnimationController;
   AnimationController maintextTextAnimationController;
-  AnimationController faceimageImageAnimationController;
-  AnimationController colorimageImageAnimationController;
+  AnimationController selectlightfilterImageAnimationController;
   
   @override
   void initState() {
@@ -29,8 +27,7 @@ class _Tutorial1State extends State<Tutorial1> with TickerProviderStateMixin {
     
     this.titleTwoAnimationController = AnimationController(duration: Duration(milliseconds: 500), vsync: this);
     this.maintextTextAnimationController = AnimationController(duration: Duration(milliseconds: 1000), vsync: this);
-    this.faceimageImageAnimationController = AnimationController(duration: Duration(milliseconds: 2500), vsync: this);
-    this.colorimageImageAnimationController = AnimationController(duration: Duration(milliseconds: 1500), vsync: this);
+    this.selectlightfilterImageAnimationController = AnimationController(duration: Duration(milliseconds: 1500), vsync: this);
     
     this.startAnimationOne();
   }
@@ -42,20 +39,18 @@ class _Tutorial1State extends State<Tutorial1> with TickerProviderStateMixin {
     
     this.titleTwoAnimationController.dispose();
     this.maintextTextAnimationController.dispose();
-    this.faceimageImageAnimationController.dispose();
-    this.colorimageImageAnimationController.dispose();
+    this.selectlightfilterImageAnimationController.dispose();
   }
   
   void startAnimationOne() {
   
     this.titleTwoAnimationController.forward();
     this.maintextTextAnimationController.forward();
-    this.faceimageImageAnimationController.forward();
-    this.colorimageImageAnimationController.forward();
+    this.selectlightfilterImageAnimationController.forward();
   }
 
   void onItemPressed(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Tutorial2()));
+    Navigator.of(context).popUntil((route) => route.isFirst);
 
   }
   
@@ -74,46 +69,46 @@ class _Tutorial1State extends State<Tutorial1> with TickerProviderStateMixin {
             children: [
               Container(
                 margin: EdgeInsets.only(top: 60),
-                child: Tutorial1WidgetAnimation1Element1(
+                child: Tutorial4WidgetAnimation1Element1(
                   animationController: this.titleTwoAnimationController,
                   child: Align(
                     alignment: Alignment.center,
                     child: Text(
-                      "Step 1.",
+                      "Step 4.",
                       style: TextStyle(
-                        color: Color.fromARGB(255, 247, 7, 70),
+                        color: AppColors.primaryText,
                         fontFamily: "Lobster",
                         fontWeight: FontWeight.w400,
                         fontSize: 32,
+                          letterSpacing: 0.1
                       ),
                     ),
                   ),
                 ),
               ),
               Container(
-                width: 230,
+                width: 243,
                 margin: EdgeInsets.only(top: 24),
-                child: Tutorial1WidgetAnimation1Element2(
+                child: Tutorial4WidgetAnimation1Element2(
                   animationController: this.maintextTextAnimationController,
                   child: RichText(
                       textAlign: TextAlign.center,
-                    text: TextSpan(text: "손목 발색 사진", style: TextStyle(
-                      color: AppColors.accentText,
-                      fontFamily: "NanumBarunGothic",
-                      fontWeight: FontWeight.w700,
-                      fontSize: 28,
-                      height: 1.21429,
-                      letterSpacing: 0.1
-                    ),
-                    children:<TextSpan>[
-                      TextSpan(text: "을\n촬영한다!", style: TextStyle(
+                      text: TextSpan(text: "원하는 색상", style: TextStyle(
                         color: AppColors.accentText,
                         fontFamily: "NanumBarunGothic",
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.w700,
                         fontSize: 28,
                         height: 1.21429,
-                      ),)
-                    ])
+                      ),
+                          children:<TextSpan>[
+                            TextSpan(text: "으로\n바꿔가면서 테스트!", style: TextStyle(
+                              color: AppColors.accentText,
+                              fontFamily: "NanumBarunGothic",
+                              fontWeight: FontWeight.w300,
+                              fontSize: 28,
+                              height: 1.21429,
+                            ),)
+                          ])
                   ),
                 ),
               ),
@@ -142,32 +137,18 @@ class _Tutorial1State extends State<Tutorial1> with TickerProviderStateMixin {
                       ),
                       Positioned(
                         top: 48,
-                        child: Container(
+                        child: Image.asset(
+                          "assets/images/tuto04_01.png",
                           width: 252,
-                          height: 448,
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 0, 0, 0),
-                          ),
-                          child: Container(),
+                          height:448,
                         ),
                       ),
                       Positioned(
                         top: 48,
-                        child: Tutorial1WidgetAnimation1Element4(
-                          animationController: this.colorimageImageAnimationController,
+                        child: Tutorial4WidgetAnimation1Element3(
+                          animationController: this.selectlightfilterImageAnimationController,
                           child: Image.asset(
-                            "assets/images/tuto01_01.png",
-                            width: 252,
-                            height:448,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 48,
-                        child: Tutorial1WidgetAnimation1Element3(
-                          animationController: this.faceimageImageAnimationController,
-                          child: Image.asset(
-                            "assets/images/tuto01_01.png",
+                            "assets/images/tuto04_02.png",
                             width: 252,
                             height:448,
                           ),
@@ -176,7 +157,6 @@ class _Tutorial1State extends State<Tutorial1> with TickerProviderStateMixin {
                     ],
                   ),
                 ),
-
               ),
             ],
           ),

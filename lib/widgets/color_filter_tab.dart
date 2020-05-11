@@ -7,14 +7,15 @@ import 'package:provider/provider.dart';
 
 class ColorFilterTab extends StatefulWidget {
   Function setUrl;
+
   ColorFilterTab({@required this.setUrl});
+
   @override
   _ColorFilterTabState createState() => _ColorFilterTabState();
 }
 
 class _ColorFilterTabState extends State<ColorFilterTab> {
   bool colorFilter = false;
-
 
   Widget _buildColorList(BuildContext context, Palette palette) {
     List<Widget> list = [];
@@ -28,10 +29,10 @@ class _ColorFilterTabState extends State<ColorFilterTab> {
           });
         },
         child: Container(
-          height: MediaQuery.of(context).size.width / 5.toInt(),
-          width: MediaQuery.of(context).size.width / 6.toInt(),
+          height: MediaQuery.of(context).size.width / 4.toInt(),
+          width: MediaQuery.of(context).size.width / 25 * 4.toInt(),
           decoration: BoxDecoration(
-            color: color == null ? Color.fromARGB(255, 174, 174, 174) : color,
+            color: color == null ? Color.fromARGB(255, 229, 229, 229) : color,
             borderRadius: Radii.k5pxRadius,
           ),
           child: Container(),
@@ -48,8 +49,7 @@ class _ColorFilterTabState extends State<ColorFilterTab> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-          left: 25, top: 25, right: 25, bottom: 32),
+      padding: const EdgeInsets.only(left: 25, top: 25, right: 25, bottom: 32),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -58,24 +58,14 @@ class _ColorFilterTabState extends State<ColorFilterTab> {
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Expanded(
-                    child: TabMenu(
-                        text: '컬러',
-                        isActive: !colorFilter,
-                        tabToggle: () {
-                          setState(() {
-                            colorFilter = false;
-                          });
-                        })),
-                Expanded(
-                    child: TabMenu(
-                        text: '필터',
-                        isActive: colorFilter,
-                        tabToggle: () {
-                          setState(() {
-                            colorFilter = true;
-                          });
-                        }))
+                TabMenu(
+                    text: 'Color Palette',
+                    isActive: !colorFilter,
+                    tabToggle: () {
+                      setState(() {
+                        colorFilter = false;
+                      });
+                    })
               ],
             ),
           ),
