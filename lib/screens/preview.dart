@@ -45,6 +45,7 @@ class Preview extends StatelessWidget {
             color: Colors.white,
             constraints: BoxConstraints.expand(),
             child: Column(children: [
+              SizedBox(height: 70),
               Image.file(preview,
                   fit: BoxFit.fitWidth,
                   width: MediaQuery.of(context).size.width,

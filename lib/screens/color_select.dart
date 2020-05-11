@@ -102,6 +102,7 @@ class _ColorSelectState extends State<ColorSelect> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            SizedBox(height: 70),
             Stack(
               alignment: Alignment.center,
               children: [

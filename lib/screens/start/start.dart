@@ -19,15 +19,13 @@ class Start extends StatefulWidget {
 
 
 class _StartState extends State<Start> with TickerProviderStateMixin {
-  AnimationController logoTextAnimationController;
   AnimationController buttongroupAnimationController;
   
   @override
   void initState() {
   
     super.initState();
-    
-    this.logoTextAnimationController = AnimationController(duration: Duration(milliseconds: 500), vsync: this);
+
     this.buttongroupAnimationController = AnimationController(duration: Duration(milliseconds: 1000), vsync: this);
     
     this.startAnimationOne();
@@ -37,8 +35,6 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
   void dispose() {
   
     super.dispose();
-    
-    this.logoTextAnimationController.dispose();
     this.buttongroupAnimationController.dispose();
   }
   
@@ -57,8 +53,6 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
   }
   
   void startAnimationOne() {
-  
-    this.logoTextAnimationController.forward();
     this.buttongroupAnimationController.forward();
   }
   

@@ -111,6 +111,7 @@ class _CameraViewState extends State<CameraView> {
             if (snapshot.connectionState == ConnectionState.done) {
               return Column(
                 children: <Widget>[
+                  SizedBox(height: 70),
                   Stack(
                     alignment: Alignment.center,
                     children: <Widget>[

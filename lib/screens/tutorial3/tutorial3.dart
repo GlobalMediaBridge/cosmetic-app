@@ -64,7 +64,7 @@ class _Tutorial3State extends State<Tutorial3> with TickerProviderStateMixin {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 60),
+                margin: EdgeInsets.only(top: 90),
                 child: Tutorial3WidgetAnimation1Element1(
                   animationController: this.titleTwoAnimationController,
                   child: Align(

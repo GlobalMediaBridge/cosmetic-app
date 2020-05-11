@@ -42,6 +42,7 @@ class _FilterState extends State<Filter> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            SizedBox(height: 70),
             Stack(
               alignment: Alignment.center,
               children: [
