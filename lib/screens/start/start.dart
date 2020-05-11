@@ -2,11 +2,13 @@
 import 'package:cosmetic_app/screens/camera_view.dart';
 import 'package:cosmetic_app/screens/start/start_animation1_element1.dart';
 import 'package:cosmetic_app/screens/start/start_animation1_element2.dart';
+import 'package:cosmetic_app/store/palette.dart';
 import 'package:cosmetic_app/utils/values/values.dart';
 import 'package:cosmetic_app/screens/album.dart';
 import 'package:cosmetic_app/screens/tutorial1/tutorial1.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 class Start extends StatefulWidget {
@@ -41,6 +43,7 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
   }
   
   void onButtonTwoPressed(BuildContext context) {
+    Provider.of<Palette>(context, listen: false).initColor();
     Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => CameraView(purpose: "color")));
   }
   
@@ -71,19 +74,11 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 230),
-              child: StartWidgetAnimation1Element1(
-                animationController: this.logoTextAnimationController,
-                child: Text(
-                    "logo",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 254, 215, 2),
-                      fontFamily: "Lobster 1.4",
-                      fontWeight: FontWeight.w400,
-                      fontSize: 40,
-                  )
-                ),
+              margin: EdgeInsets.only(top: 300),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 100),
+                child: Image.asset("assets/images/logo2.png"),
+
               ),
             ),
             Container(
@@ -107,30 +102,6 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
                         padding: EdgeInsets.all(0),
                         child: Text(
                           "시작하기",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: AppColors.primaryText,
-                            fontFamily: "NanumBarunGothic",
-                            fontWeight: FontWeight.w400,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 310,
-                      height: 46,
-                      margin: EdgeInsets.only(top: 14),
-                      child: FlatButton(
-                        onPressed: () => this.onButtonThreePressed(context),
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(23)),
-                        ),
-                        textColor: Color.fromARGB(255, 247, 7, 70),
-                        padding: EdgeInsets.all(0),
-                        child: Text(
-                          "사진앨범",
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             color: AppColors.primaryText,
@@ -178,7 +149,7 @@ class _StartState extends State<Start> with TickerProviderStateMixin {
             Container(
               margin: EdgeInsets.only(bottom: 20),
               child: Text(
-                "© 2020 app name",
+                "© 2020 Lipsynk",
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   color: Color.fromARGB(255, 0, 0, 0),

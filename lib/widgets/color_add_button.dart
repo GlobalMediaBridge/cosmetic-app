@@ -15,7 +15,7 @@ class ColorAddButton extends StatelessWidget {
           color: AppColors.primaryText,
           fontFamily: "NanumBarunGothic",
           fontWeight: FontWeight.w700,
-          fontSize: 24,
+          fontSize: 30,
         ),
       ),
     );

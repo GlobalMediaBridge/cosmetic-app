@@ -68,66 +68,21 @@ class _Tutorial2State extends State<Tutorial2> with TickerProviderStateMixin {
           child: Column(
             children: [
               Container(
-                width: 147,
-                height: 26,
                 margin: EdgeInsets.only(top: 60),
                 child: Tutorial2WidgetAnimation1Element1(
                   animationController: this.titleTwoAnimationController,
-                  child: Stack(
+                  child: Align(
                     alignment: Alignment.center,
-                    children: [
-                      Positioned(
-                        top: -2,
-                        child: Opacity(
-                          opacity: 0.5,
-                          child: Container(
-                            width: 180,
-                            height: 30,
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 254, 215, 2),
-                              borderRadius: BorderRadius.all(Radius.circular(15)),
-                            ),
-                            child: Container(),
-                          ),
-                        ),
+                    child: Text(
+                      "Step 2.",
+                      style: TextStyle(
+                        color: AppColors.primaryText,
+                        fontFamily: "Lobster",
+                        fontWeight: FontWeight.w400,
+                        fontSize: 32,
+                          letterSpacing: 0.1
                       ),
-                      Positioned(
-                        left: 0,
-                        right: 0,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                "Step 2.",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  color: AppColors.primaryText,
-                                  fontFamily: "Lobster 1.4",
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                            Spacer(),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                "컬러 선택하기",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  color: AppColors.primaryText,
-                                  fontFamily: "NanumBarunGothic",
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
@@ -136,16 +91,24 @@ class _Tutorial2State extends State<Tutorial2> with TickerProviderStateMixin {
                 margin: EdgeInsets.only(top: 24),
                 child: Tutorial2WidgetAnimation1Element2(
                   animationController: this.maintextTextAnimationController,
-                  child: Text(
-                    "얼굴에 화장품이\n발색 된 사진을 확인",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: AppColors.accentText,
-                      fontFamily: "NanumBarunGothic",
-                      fontWeight: FontWeight.w700,
-                      fontSize: 28,
-                      height: 1.21429,
-                    ),
+                  child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(text: "+ 버튼", style: TextStyle(
+                        color: AppColors.accentText,
+                        fontFamily: "NanumBarunGothic",
+                        fontWeight: FontWeight.w700,
+                        fontSize: 28,
+                        height: 1.21429,
+                      ),
+                          children:<TextSpan>[
+                            TextSpan(text: "을 눌러서\n원하는 색상을 선택!", style: TextStyle(
+                              color: AppColors.accentText,
+                              fontFamily: "NanumBarunGothic",
+                              fontWeight: FontWeight.w300,
+                              fontSize: 28,
+                              height: 1.21429,
+                            ),)
+                          ])
                   ),
                 ),
               ),
@@ -175,8 +138,9 @@ class _Tutorial2State extends State<Tutorial2> with TickerProviderStateMixin {
                       Positioned(
                         top: 48,
                         child: Image.asset(
-                          "assets/images/screen_capture_2.png",
-                          fit: BoxFit.none,
+                          "assets/images/tuto02_01.png",
+                          width: 252,
+                          height:448,
                         ),
                       ),
                       Positioned(
@@ -184,8 +148,9 @@ class _Tutorial2State extends State<Tutorial2> with TickerProviderStateMixin {
                         child: Tutorial2WidgetAnimation1Element3(
                           animationController: this.colorfilterimageImageAnimationController,
                           child: Image.asset(
-                            "assets/images/screen_capture_3.png",
-                            fit: BoxFit.none,
+                            "assets/images/tuto02_02.png",
+                            width: 252,
+                            height:448,
                           ),
                         ),
                       ),

@@ -25,6 +25,11 @@ class Palette with ChangeNotifier {
     return null;
   }
 
+  void initColor(){
+    colors.clear();
+    notifyListeners();
+  }
+
   List<Color> getColorList() {
     return colors;
   }

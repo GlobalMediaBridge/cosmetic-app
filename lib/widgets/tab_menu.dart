@@ -23,11 +23,8 @@ class TabMenu extends StatelessWidget {
           text,
           textAlign: TextAlign.left,
           style: TextStyle(
-            color: isActive
-                ? AppColors.primaryText
-                : Color.fromARGB(255, 154, 154, 155),
+            color: Color.fromARGB(255, 229, 229, 229),
             fontFamily: "NanumBarunGothic",
-            fontWeight: FontWeight.w700,
             fontSize: 18,
           ),
         ));

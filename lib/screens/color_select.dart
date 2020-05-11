@@ -36,10 +36,10 @@ class _ColorSelectState extends State<ColorSelect> {
     for (int i = 0; i < 5; i++) {
       Color color = palette.getColor(i);
       list.add(Container(
-        height: MediaQuery.of(context).size.width / 5.toInt(),
-        width: MediaQuery.of(context).size.width / 6.toInt(),
+        height: MediaQuery.of(context).size.width / 4.toInt(),
+        width: MediaQuery.of(context).size.width / 25 * 4.toInt(),
         decoration: BoxDecoration(
-          color: color == null ? Color.fromARGB(255, 174, 174, 174) : color,
+          color: color == null ? Color.fromARGB(255, 229, 229, 229) : color,
           borderRadius: Radii.k5pxRadius,
         ),
         child: Container(),
@@ -149,12 +149,12 @@ class _ColorSelectState extends State<ColorSelect> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          "Color palette",
+                          "Color Palette",
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             color: AppColors.primaryText,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
+                            fontFamily: "NanumBarunGothic",
+                            fontSize: 18,
                           ),
                         ),
                         ColorAddButton(addColor: addColor)
